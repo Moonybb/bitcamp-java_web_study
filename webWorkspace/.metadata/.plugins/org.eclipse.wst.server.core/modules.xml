@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<modules>
+  <module moduleId="org.eclipse.jst.jee.server:html08"/>
+  <module moduleId="org.eclipse.jst.jee.server:html0723" serverId="Tomcat v7.0 Server at localhost"/>
+  <module moduleId="org.eclipse.jst.jee.server:mvc0729" serverId="Apache Tomcat v7.0  at localhost"/>
+  <module moduleId="org.eclipse.jst.jee.server:mvc01" serverId="Apache Tomcat v7.0  at localhost"/>
+</modules>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title> Title </title>
+	<script type="text/javascript" src="js/jquery-1.12.4.js">
+    </script>
+    <script type="text/javascript">
+    window.onload=function(){
+//        var ele1=$('ul').append('<li>add01</li>');
+//        var ele2=$('<li>add02</li>').appendTo('ul'); // ul에다가 집어넣음. 아예 생성.
+//        console.log(ele1,ele2);
+//        $('ul').append('<li>add02</li>');
+//        $('ul').append(document.querySelector('li'));
+//        $('ul').append(document.querySelector('li'));
+//        $('ul').append(document.querySelector('li'));
+//        $('ul').prepend('<li>add1</li>'); //앞으로 집어넣고
+//        $('<li>add2</li>').prependTo('ul'); //뒤로 집어넣음
+        $('ul').before('<p>before</p>');
+        $('<p>before to after</p>').insertBefore('ul'); //ul을 기준으로 하니까
+        $('ul').after('<p>after</p>');
+        $('<p>before to after</p>').insertAfter('ul'); //ul을 기준으로 하니까
+        
+        var ele=$('ul>li').eq(0).remove();
+        console.log(ele);
+        $('ul').prepend(ele);
+        var ele=$('ul>li').eq(0).detach();
+        console.log(ele);
+        $('ul').prepend(ele);
+    };
+    </script>
+</head>
+
+	<body>
+    <h1>append</h1>
+    <div>
+        <ul>
+            <li>item1</li>
+            <li>item2</li>
+            <li>item3</li>
+            <li>item4</li>
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+package com.bit.dept.model;
+
+import java.sql.SQLException;
+
+public class DeptTest {
+
+	public static void main(String[] args) {
+		try {
+			Dept04Dao dao = new Dept04Dao();
+			System.out.println("connection : "+(dao.conn!=null));
+			ArrayList<Dept04Dto> list = dao.selectAll();
+			for(Dept04Dto bean:list){
+				System.out.println(bean);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+}

@@ -1,0 +1,5 @@
+package com.bit.step02;
+
+public class Ex08 extends MyServlet2 {
+
+}

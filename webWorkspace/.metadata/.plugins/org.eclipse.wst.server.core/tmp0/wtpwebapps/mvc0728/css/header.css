@@ -1,0 +1,27 @@
+#header{
+	overflow: hidden;
+}
+#header>h1{
+	width: 213px;
+	height: 61px;
+	text-indent: -9999px;
+	background-image: url("../img/bitcamp.png");
+}
+#header>form{
+	top:-100px;
+	position: relative;
+	width: 600px;
+	float: right;
+}
+#header>form>div{
+	display: inline-block;
+	width: 190px;
+}
+#header>form>div>label{
+	display: inline-block;
+	width: 50px;
+}
+#header>form>div>input{
+	width: 100px;
+}
+#header>form>div>button{}

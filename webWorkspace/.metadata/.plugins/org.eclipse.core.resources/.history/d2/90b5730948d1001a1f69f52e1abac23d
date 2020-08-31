@@ -1,0 +1,46 @@
+package com.bit.dept.model;
+
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+public class DeptTest {
+
+	public static void main(String[] args) {
+		try {
+			Dept04Dao dao = new Dept04Dao();
+			System.out.println("connection : "+(dao.conn!=null));
+			
+			//select
+			ArrayList<Dept04Dto> list = dao.selectAll();
+			System.out.println("list : "+(list!=null));
+			System.out.println("list size 예상치:5, 결과치:"+list.size());
+//			for(Dept04Dto bean:list){
+//				System.out.println(bean);
+//			}
+			
+			//insert
+			dao= new Dept04Dao();
+			int result = dao.insertOne("test1", "test1");
+			System.out.println("insert : "+(result>0));
+			
+			//max
+			dao=new Dept04Dao();
+			int max = dao.maxDeptno();
+			System.out.println("최근 입력 deptno="+max);
+			
+			//update
+			Dept04Dto bean = new Dept04Dto(max, "edit1", "edit2");
+			dao = new Dept04Dao();
+			result=dao.updateOne(bean.getDeptno(), bean.getDname(), bean.getLoc());
+			System.out.println("update : "+(result>0));
+					
+			//delete
+			dao=new Dept04Dao();
+			result = dao.deleteOne(max);
+			System.out.println("delete:"+(result>0));
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+}

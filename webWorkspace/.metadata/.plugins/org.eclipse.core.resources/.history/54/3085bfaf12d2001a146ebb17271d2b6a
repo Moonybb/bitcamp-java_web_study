@@ -1,0 +1,23 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>JSTL</h1>
+	<jsp:useBean id="bean1" scope="page" class="com.bit.controller.ElController.JavaBean"></jsp:useBean>
+	<jsp:setProperty property="su1" name="bean1" value="1234"/>
+	<jsp:setProperty property="su2" name="bean2" value="3.14"/>
+	<jsp:setProperty property="name" name="bean2" value="test"/>
+	
+	<ol>
+		<li><jsp:getProperty</li>
+		<li></li>
+		<li></li>
+	</ol>
+</body>
+</html>

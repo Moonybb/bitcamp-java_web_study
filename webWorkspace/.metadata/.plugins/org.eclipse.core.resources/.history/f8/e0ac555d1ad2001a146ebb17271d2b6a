@@ -1,0 +1,35 @@
+<%@page import="java.util.ArrayList"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>JSTL 반복문</h1>
+	<%
+		String[] msgs = {"java","DB","web","framework"};
+		pageContext.setAttribute("msgs", msgs);
+		java.util.ArrayList<String> list = null;
+		list = new ArrayList<String>();
+		list.add("JAVA");
+		list.add("DB");
+		list.add("WEB");
+		list.add("framework");
+		pageContext.setAttribute("alist", list);
+	%>
+	<ol>
+		<c:forEach items="${msgs }" varStatus="status">
+			<li>${msgs[status.index] }</li>
+		</c:forEach>
+	</ol>
+	<ol>
+		<c:forEach items="${alist }" varStatus="status">
+			<li>${alist.get(status.index }</li>
+		</c:forEach>
+	</ol>
+</body>
+</html>

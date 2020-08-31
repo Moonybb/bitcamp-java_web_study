@@ -1,0 +1,48 @@
+<%@page import="java.util.ArrayList"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>EL의 활용</h1>
+	<%
+		String msg1 = "el로 출력 딜까요";
+		String msg2 = "page scope로 겹치면 어떻게 될까?";
+		// 우선순위 page > request > session > application
+		pageContext.setAttribute("msg1", msg1);
+		pageContext.setAttribute("msg2", msg2);
+		
+		String[] msgs = {"java","DB","web","framework"};
+		pageContext.setAttribute("msgs", msgs);
+		
+		ArrayList<String> list = new ArrayList<String>();
+		list.add("JAVA");
+		list.add("DB");
+		list.add("WEB");
+		list.add("FRAMEWORK");
+		pageContext.setAttribute("alist", list);
+	%>
+	
+	<p>page scope(java) : <%=pageContext.getAttribute("msg1") %></p>
+	<p>page scope(el): ${msg1}</p>
+	<p>page scope(java) : <%=pageContext.getAttribute("msg2") %></p>
+	<p>page scope(el): ${msg2}</p>
+	<!-- pagescope와 겹치는 requestscope를 보고 싶으면 아래와 같이 requestScope.를 붙혀준다.  -->
+	<p>request scope(java): <%=request.getAttribute("msg2") %></p> 
+	<p>request scope(el): ${requestScope.msg2}</p>
+	
+	<p>Array(el): ${msgs}</p>
+	<ol>
+		<li>${msgs[0] }</li>
+		<li>${msgs[1] }</li>
+		<li>${msgs[2] }</li>
+		<li>${msgs[3] }</li>
+	</ol>
+	<p>ArrayList : <%=pageContext.getAttribute("alist"); %></p>
+	<p>ArrayList : $(alist)</p>
+</body>
+</html>

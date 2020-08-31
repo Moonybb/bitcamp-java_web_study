@@ -1,0 +1,10 @@
+package com.bit.model;
+
+public class Emp03Dao {
+	Connection conn;
+	
+	public Emp03Dao(){
+		String driver = "oracle.jdbc.OracleDriver";
+		String url = "jdbc:oracle:thin:@localhost:1521:xe";
+	}
+}

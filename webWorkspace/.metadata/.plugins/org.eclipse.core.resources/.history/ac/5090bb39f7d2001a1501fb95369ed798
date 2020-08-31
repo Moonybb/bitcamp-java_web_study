@@ -1,0 +1,37 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<%@ include file="/template/head.jspf" %>
+</head>
+<body>
+<%@ include file="template/header.jspf" %>
+<%@ include file="./template/menu.jspf" %>
+	<h2>상세페이지</h2>
+	<form method="post">
+		<div>
+			<label for=""></label>
+			<input type="text" name="" id="" value="" />
+		</div>
+		<div>
+			<label for=""></label>
+			<input type="text" name="" id="" value="" />
+		</div>
+		<div>
+			<label for=""></label>
+			<input type="text" name="" id="" value="" />
+		</div>
+		<div>
+			<button type="submit">수정</button>
+			<button type="reset">삭제</button>
+			<button type="button">뒤로</button>
+		</div>	
+		
+	</form>
+<%@ include file="template/footer.jspf" %>
+
+</body>
+</html>

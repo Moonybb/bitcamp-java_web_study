@@ -1,0 +1,21 @@
+package com.bit.step02;
+
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class Ex08 extends MyServlet2 {
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse res)
+			throws IOException {
+		System.out.println("call GET...");
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse res)
+			throws IOException {
+		System.out.println("call POST...");
+	}
+}

@@ -1,0 +1,16 @@
+package com.bit.step02;
+
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class Ex06 extends MyServlet2 {
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse res)
+			throws IOException {
+		req.setCharacterEncoding("utf-8");
+		String msg = req.getParameter("msg");
+	}
+}

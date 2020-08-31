@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title> Title </title>
+	<script type="text/javascript">
+        var input;
+        window.onload=function(){
+            input = document.querySelector('input');
+            
+            //down과 press는 한박자 늦게 value가 호출됨
+            
+            input.onkeydown=function(e){
+                console.log('key down:'+input.value);
+                console.log(e);
+            };
+            input.onkeypress=function(){//화면상의 퍼포먼스 X일때 호출된다.
+                console.log('press:'+input.value);
+            };
+            input.onkeyup=function(){
+                console.log('key up:'+input.value);
+            };
+        };
+    </script>
+</head>
+
+	<body>
+    <h1>키 이벤트</h1>
+    <input type="text"/>
+</body>
+</html>

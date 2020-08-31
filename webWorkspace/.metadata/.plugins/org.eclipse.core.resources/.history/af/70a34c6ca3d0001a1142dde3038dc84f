@@ -1,0 +1,33 @@
+package com.bit.controller;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class DeleteController extends HttpServlet {
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		int sabun = Integer.parseInt(request.getParameter("idx"));
+		response.setCharacterEncoding("utf-8");
+		PrintWriter out = response.getWriter();
+		out.println("<script type=\"text/javascript\" src=\"js/jquery-1.12.4.js\"></script>");
+		out.println("<script>");
+		out.println("var result=window.confirm('삭제하시겠습니까?');");
+		out.println("if(result) $.post('delete.bit',function(){location.href='list.bit';};");
+		out.println("else history.back();");
+		out.println("</script>");
+	
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+	
+	
+	}
+}

@@ -1,0 +1,9 @@
+INDEX VERSION 1.4+/Users/moony/Desktop/Programming/webWorkspace/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
+3095496364.index
+3413094129.index
+1308030948.index
+2898729292.index
+866766532.index
+60547789.index
+2940288991.index
+3481712186.index

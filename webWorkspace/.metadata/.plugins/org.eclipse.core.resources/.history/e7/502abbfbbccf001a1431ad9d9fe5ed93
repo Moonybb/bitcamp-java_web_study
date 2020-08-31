@@ -1,0 +1,37 @@
+package com.bit.step02;
+
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class Ex08 extends MyServlet2 {
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse res)
+			throws IOException {
+		String msg = req.getParameter("msg");
+		System.out.println("call GET..."+msg);
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse res)
+			throws IOException {
+		String msg = req.getParameter("msg");
+		System.out.println("call POST..."+msg);
+	}
+	
+	@Override
+	protected void doPut(HttpServletRequest req, HttpServletResponse res)
+			throws IOException {
+		String msg = req.getParameter("msg");
+		System.out.println("call PUT..."+msg);
+	}
+	
+	@Override
+	protected void doDelete(HttpServletRequest req, HttpServletResponse res)
+			throws IOException {
+		String msg = req.getParameter("msg");
+		System.out.println("call DELETE..."+msg);
+	}
+}

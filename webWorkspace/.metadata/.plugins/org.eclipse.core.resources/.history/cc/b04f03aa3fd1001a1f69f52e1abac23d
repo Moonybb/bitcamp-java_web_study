@@ -1,0 +1,14 @@
+package com.bit.dept.model;
+
+import java.sql.SQLException;
+
+public class DeptTest {
+
+	public static void main(String[] args) {
+		try {
+			Dept04Dao dao = new Dept04Dao();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+}

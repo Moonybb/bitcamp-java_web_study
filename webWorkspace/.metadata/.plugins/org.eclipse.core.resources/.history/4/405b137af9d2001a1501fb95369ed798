@@ -1,0 +1,54 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<%@ include file="/template/head.jspf" %>
+<style type="text/css">
+
+</style>
+<script type="text/javascript">
+	$(function(){
+		$('#dname,#loc').prop('readonly',true);
+		$('form').one('submit',function(){
+			alert('one');
+			return false;
+		});
+		// 위와 이래는 같지만 나중에 유지보수할 때에 새로 생겨난 form태그에도 적용이 가능해진다. -=> 이벤트 바인딩
+		$(document).one('reset','form',function(){
+			alert('delete');
+			return false;
+		});
+	});
+</script>
+</head>
+<body>
+<%@ include file="template/header.jspf" %>
+<%@ include file="./template/menu.jspf" %>
+	<h2>상세페이지</h2>
+	<form method="post">
+		<div>
+			<label for="deptno">deptno</label>
+			<input type="text" name="deptno" id="deptno" value="${bean.deptno }" readonly />
+		</div>
+		<div>
+			<label for="dname">dname</label>
+			<input type="text" name="dname" id="dname" value="${bean.dname }" />
+		</div>
+		<div>
+			<label for="loc">loc</label>
+			<input type="text" name="loc" id="loc" value="${bean.loc }" />
+		</div>
+		<div>
+			<button type="submit">수정</button>
+			<button type="reset">삭제</button>
+			<button type="button">뒤로</button>
+		</div>	
+		
+	</form>
+<%@ include file="template/footer.jspf" %>
+
+</body>
+</html>

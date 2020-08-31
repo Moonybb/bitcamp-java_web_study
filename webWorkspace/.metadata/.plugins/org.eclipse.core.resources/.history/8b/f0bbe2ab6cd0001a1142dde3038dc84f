@@ -1,0 +1,10 @@
+package com.bit.model;
+
+public class Emp03Dto {
+	
+	private int sabun;
+	private String name;
+	private String sub;
+	private Date nalja;
+	private int pay;
+}

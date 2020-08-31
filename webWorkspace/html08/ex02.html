@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title> Title </title>
+<style rel="stylesheet" type="text/css">
+        body>div{}
+        body>div>ul{
+            padding: 0px;
+        }
+        body>div>ul>li{
+            margin-right: 5px;
+            list-style: none;
+            float: left;
+            width: 100px;
+            height: 50px;
+            overflow: hidden; 
+/*            overflow: visible;*/
+        }
+        body>div>ul>li>a{
+            display: block;
+            height: 50px;
+            background-color: gray;
+        }
+        body>div>ul>li>ol{
+            padding: 0px;
+        }
+        body>div>ul>li>ol>li{
+            border-top: 1px solid white;
+            list-style: none;
+            height: 50px;
+            background-color: darkgray;
+        }
+    </style>
+<script type="text/javascript">
+    var menus,lis;
+    window.onload=function(){
+        menus=document.querySelectorAll('ul>li>a');
+        lis=document.querySelectorAll('ul>li');
+        menus[0].addEventListener('mouseenter',function(){
+            menus[0].parentElement.style.overflow='visible';
+        },true);
+        lis[0].addEventListener('mouseleave',function(){
+            menus[0].parentElement.style.overflow='hidden';
+        });
+    };
+    </script>
+</head>
+
+<body>
+    <div>
+        <ul>
+            <li>
+                <a href="#">menu1</a>
+                <ol>
+                    <li>menu1-1</li>
+                    <li>menu1-2</li>
+                    <li>menu1-3</li>
+                </ol>
+            </li>
+            <li>
+                <a href="#">menu2</a>
+                <ol>
+                    <li>menu2-1</li>
+                    <li>menu2-2</li>
+                    <li>menu2-3</li>
+                </ol>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

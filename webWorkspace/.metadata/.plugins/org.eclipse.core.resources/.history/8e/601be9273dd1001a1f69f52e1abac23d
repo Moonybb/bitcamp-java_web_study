@@ -1,0 +1,10 @@
+drop table dept04;
+create table dept04(
+	deptno number(2) primary key,
+	dname varchar2(15),
+	loc varchar2(15)
+);
+create sequence dept04_seq;
+--dummy
+insert into dept04 values (dept04_seq.nextval,'영업','서울');
+insert into dept04 values (dept04_seq.nextval,'회계','세종');

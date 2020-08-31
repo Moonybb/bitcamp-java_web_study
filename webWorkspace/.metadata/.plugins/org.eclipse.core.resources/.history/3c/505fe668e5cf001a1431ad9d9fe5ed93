@@ -1,0 +1,13 @@
+package com.bit.model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class DeptDao {
+
+	public List<DeptDto> getList(){
+		List<DeptDto> list = new ArrayList<DeptDto>();
+		
+		return list;
+	}
+}

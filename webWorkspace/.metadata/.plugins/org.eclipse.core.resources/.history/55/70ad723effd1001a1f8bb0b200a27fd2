@@ -1,0 +1,32 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>el의 문법</h1>
+	<table>
+		<tr>
+			<th>연산</th>
+			<th>java</th>
+			<th>el</th>
+			<th>el표기</th>
+		</tr>
+		<tr>
+			<td>출력</td>
+			<td><%="출력" %></td>
+			<td>${"출력"}</td>
+			<td>${"출력"}</td>
+		</tr>
+		<tr>
+			<td>숫자</td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+	</table>
+</body>
+</html>

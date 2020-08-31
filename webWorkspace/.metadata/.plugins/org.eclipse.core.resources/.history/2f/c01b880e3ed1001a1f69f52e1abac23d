@@ -1,0 +1,6 @@
+package com.bit.dept.model;
+
+public class Dept04Dto {
+	private int deptno;
+	private String dname, loc;
+}

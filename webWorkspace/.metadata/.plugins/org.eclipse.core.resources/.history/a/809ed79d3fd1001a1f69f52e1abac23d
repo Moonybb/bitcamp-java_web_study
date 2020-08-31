@@ -1,0 +1,8 @@
+package com.bit.dept.model;
+
+public class DeptTest {
+
+	public static void main(String[] args) {
+		Dept04Dao dao = new Dept04Dao();
+	}
+}

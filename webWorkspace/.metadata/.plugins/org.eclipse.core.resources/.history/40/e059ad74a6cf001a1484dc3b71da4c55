@@ -1,0 +1,43 @@
+package com.bit.step01;
+
+import java.io.IOException;
+
+import javax.servlet.Servlet;
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+
+public class Ex01 implements Servlet {
+
+	@Override
+	public void destroy() {
+		System.out.println("destroy...");
+	}
+
+	@Override
+	public ServletConfig getServletConfig() {
+		System.out.println("config..");
+		return null;
+	}
+
+	@Override
+	public String getServletInfo() {
+		System.out.println("info...");
+		return null;
+	}
+
+	@Override
+	// 최초 서블릿이 동작할때 실행
+	public void init(ServletConfig arg0) throws ServletException {
+		System.out.println("init..."+this.hashCode());
+	}
+
+	@Override
+	// 서비스가 동작할때 실행 새로고침의 경우 실행
+	public void service(ServletRequest arg0, ServletResponse arg1)
+			throws ServletException, IOException {
+		System.out.println("service..."+this.hashCode());
+	}
+	
+}

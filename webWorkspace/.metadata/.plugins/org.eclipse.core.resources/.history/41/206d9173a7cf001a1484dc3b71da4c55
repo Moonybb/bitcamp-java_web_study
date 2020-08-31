@@ -1,0 +1,53 @@
+package com.bit.step01;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.Servlet;
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+
+public class Ex01 implements Servlet {
+	ServletRequest config;
+	
+	// 요청이 있을 때마다 객체를 생성하고 사용하는 것이 아니라 브라우저를 바꾸고 원격으로 접속을 하더라도 동일한 해쉬코드 값을 가진다.
+
+	@Override
+	// 최초 서블릿이 동작할때 실행
+	// 객체를 찍어내는 당시에 이때 컴파일이 되고 그 이후에 web.xml에 정의 되어 있는 url pattern으로 접속되었을 때 최초에 찍어놓은 객체를 가지고 사용한다.
+	// 최초에 접속에서는 다른 언어에 비해서 속도가 느리다. 하지만 최초에 찍은 객체를 가지고 이후에 재사용하다보니 컴파일을 매번 안해도 되기 때문에 수행 속도가 빠르다.
+	public void init(ServletConfig arg0) throws ServletException {
+		System.out.println("init..."+this.hashCode());
+	}
+
+	@Override
+	// 서비스가 동작할때 실행 새로고침의 경우 실행
+	public void service(ServletRequest arg0, ServletResponse arg1)
+			throws ServletException, IOException {
+		System.out.println("service..."+this.hashCode());
+		
+		PrintWriter out = resp.getWriter();
+		out.println("<h1>hello world</h1>");
+	}
+
+	@Override
+	// 서비스 종료
+	public void destroy() {
+		System.out.println("destroy...");
+	}
+
+	@Override
+	public ServletConfig getServletConfig() {
+		System.out.println("config..");
+		return this.config;
+	}
+
+	@Override
+	public String getServletInfo() {
+		System.out.println("info...");
+		return "이 서블릿은 누가 언제 만들었고...";
+	}
+
+}
