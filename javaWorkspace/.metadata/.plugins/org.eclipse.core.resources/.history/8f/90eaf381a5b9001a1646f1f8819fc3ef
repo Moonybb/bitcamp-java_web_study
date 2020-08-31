@@ -1,0 +1,62 @@
+package com.bit.web01;
+
+import java.io.IOException;
+import java.io.OutputStream;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.net.SocketAddress;
+
+public class Server extends Thread{
+	Socket socket;
+	
+	public Server(Socket socket){
+		this.socket=socket;
+	}
+	@Override
+	public void run() {
+		OutputStream outputStream = null;
+		
+		try {
+			SocketAddress socktAddress = socket.getRemoteSocketAddress();
+			outputStream = socket.getOutputStream();
+			////////////////
+			outputStream.write("Hello World".getBytes());
+			outputStream.flush();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally{
+			try {
+				if(outputStream!=null)outputStream.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	public static void main(String[] args) {
+		int port = 8080;
+		ServerSocket serverSocket = null;
+		
+		try {
+			serverSocket = new ServerSocket(port);
+			while(true){
+				Socket socket = serverSocket.accept();
+				Server server = new Server(socket);
+				server.start();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(serverSocket!=null)serverSocket.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
+		
+		
+	}
+
+}

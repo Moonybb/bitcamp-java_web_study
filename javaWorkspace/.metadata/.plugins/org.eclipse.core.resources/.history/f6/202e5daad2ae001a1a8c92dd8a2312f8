@@ -1,0 +1,178 @@
+package com.bit.tcp;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.InetAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
+
+class Input implements Runnable{
+   ServerSocket serverSocket;
+   Socket clientSocket;
+   private InputStream inputStream;
+   private OutputStream outputStream;
+   private InputStreamReader inputStreamReader;
+   private OutputStreamWriter outputStreamWriter;
+   private BufferedReader bufReader;
+   private BufferedWriter bufWriter;
+   static List<OutputStream> list = new ArrayList<OutputStream>();
+   
+   Input(Socket clientSocket){
+      this.clientSocket=clientSocket;
+   }
+   @Override
+   public void run() {
+      socketInput(clientSocket);
+   }
+   public void socketInput(Socket clientSocket){
+      try {
+         inputStream = clientSocket.getInputStream();
+         inputStreamReader = new InputStreamReader(inputStream);
+         bufReader = new BufferedReader(inputStreamReader);
+         InetAddress inetAddress = clientSocket.getInetAddress();
+         System.out.println(inetAddress.getHostAddress()+"접속");
+         
+         
+         outputStream = clientSocket.getOutputStream();
+         list.add(outputStream);
+         while(true){
+            String msg = bufReader.readLine();
+            if(msg.isEmpty())break;
+            for(int i=0;i<list.size();i++){
+               OutputStream out = list.get(i);
+               outputStreamWriter = new OutputStreamWriter(out);
+               bufWriter = new BufferedWriter(outputStreamWriter);
+               bufWriter.write(inetAddress.getHostAddress()+">>"+msg);
+               bufWriter.newLine();
+               bufWriter.flush();
+               
+            }
+         }
+         System.out.println(inetAddress.getHostAddress());
+      } catch (IOException e) {
+         e.printStackTrace();
+      }
+      
+   }////accept하는 thread 생성 , 클래스 객체 생성시 생성자로 ServerSocket을 받아옴
+}
+
+class AcceptThread implements Runnable{
+   ServerSocket serverSocket;
+   Socket clientSocket;
+   private InputStream inputStream;
+   private OutputStream outputStream;
+   private InputStreamReader inputStreamReader;
+   private OutputStreamWriter outputStreamWriter;
+   private BufferedReader bufReader;
+   private BufferedWriter bufWriter;
+   static List<OutputStream> list = new ArrayList<OutputStream>();
+   
+   public AcceptThread(ServerSocket serverSocket){
+      this.serverSocket = serverSocket;
+   }
+   
+   @Override
+   public void run() {
+         while(true){
+            
+            try {
+                  clientSocket = serverSocket.accept();
+                  Input in = new Input(clientSocket);
+                  new Thread(in).start();
+            } catch (IOException e) {
+               e.printStackTrace();
+            }
+//            socketInput();
+         }
+   }
+   //받은 clientSocket을 InputStream으로 변환.
+
+   
+   
+   void change(Socket socket){
+      this.clientSocket = socket;
+   }
+}
+
+
+
+
+
+public class UpDownServer {
+   private Socket clientSocket;
+   private InputStream inputStream;
+   private OutputStream outputStream;
+   private InputStreamReader inputStreamReader;
+   private OutputStreamWriter outputStreamWriter;
+   private BufferedReader bufReader;
+   private BufferedWriter bufWriter;
+   
+   public void serverSetting(){
+      try {
+         
+         ServerSocket serverSocket = new ServerSocket(8080);//포트여는 서버소켓생성  
+         AcceptThread acceptThread = new AcceptThread(serverSocket);  
+         
+         
+         new Thread(acceptThread).start(); // 들어온 소켓을 계속해서 엑셉 시켜주며, 
+                                                   //계속해서 새로 들어온 서버소켓을 교체해주는 과정
+         
+         System.out.println("확인 severSetting");
+      } catch (IOException e) {
+         e.printStackTrace();
+      }
+   }
+   public void closeAll(){
+      try {
+         if(bufWriter!=null)bufWriter.close();
+         if(bufReader!=null)bufReader.close();
+         if(outputStreamWriter!=null)outputStreamWriter.close();
+         if(inputStreamReader!=null)inputStreamReader.close();
+         if(inputStream!=null)inputStream.close();
+         if(outputStream!=null)outputStream.close();
+      } catch (IOException e) {
+      }
+   }
+   public void streamSetting(){
+      try {
+         inputStream = clientSocket.getInputStream();
+         inputStreamReader = new InputStreamReader(inputStream);
+         bufReader = new BufferedReader(inputStreamReader);
+         outputStream = clientSocket.getOutputStream();
+         outputStreamWriter = new OutputStreamWriter(outputStream);
+         bufWriter = new BufferedWriter(outputStreamWriter);
+      } catch (IOException e) {
+         e.printStackTrace();
+      }
+   }//클라이언트로 부터 받은 Stream을 서버의 버퍼인풋스트림으로 바꾸는 과정.
+   
+   public void dataRecv(){
+      
+      
+   }
+   public void dataSend(){
+      
+   }
+   
+   public UpDownServer(){
+      serverSetting();
+      
+   }
+   public static void main(String[] args) {
+      
+      new UpDownServer();
+      
+      
+   }
+}

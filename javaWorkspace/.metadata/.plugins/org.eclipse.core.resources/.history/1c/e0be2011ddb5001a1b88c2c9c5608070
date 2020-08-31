@@ -1,0 +1,17 @@
+package com.bit.studentscorever1;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class StudentScore {
+	
+	public static void main(String[] args) {
+		
+		Map<Integer, Student> list = new HashMap<>();
+		System.out.println("학생 성적 입력 및 관리기기");
+		System.out.println("---------------------------------");
+		
+		
+		
+	}
+}

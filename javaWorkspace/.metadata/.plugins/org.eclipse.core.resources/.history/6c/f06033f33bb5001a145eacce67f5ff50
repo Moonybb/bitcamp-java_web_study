@@ -1,0 +1,44 @@
+package com.bit.student;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Scanner;
+import java.util.Set;
+
+public class Score {
+	
+	
+	public static void main(String[] args) {
+		
+//		Set<Integer,Student> list = new HashSet<>();
+		Scanner sc = new Scanner(System.in);
+		System.out.println("학생 성적 입력기");
+		
+		String msg ="\n-------------------------";
+		
+		while(true){
+			
+			System.out.println("원하시는 번호를 입력해주세요 1.전체보기 2.성적입력 3.성적수정 4.성적삭제 0.종료");
+			int input = 0;
+			if(input==0){
+				//종료
+				break;
+			}else if(input==1){
+				//전체보기
+				msg+="\n학번||\t이름||\t국어||\t영어||\t수학||\t총점||\t평균||";
+				System.out.println(msg);
+			}else if(input==2){
+				//성적입력
+			}else if(input==3){
+				//성적수정
+			}else if(input==4){
+				//성적삭제
+			}
+				
+		}
+		
+		
+		
+	}
+}

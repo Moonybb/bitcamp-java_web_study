@@ -1,0 +1,277 @@
+SQL> @pl01.sql
+Hello world...                                                                  
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL>  declare
+  2    2  --변수의선언부
+  3    3  begin
+  4    4  --명령-- java System.out.println();
+  5    5  dbms_output.put_line('Hello world');
+  6    6  end;
+  7  
+  8  
+  9  
+ 10  
+ 11  
+ 12  
+ 13  
+ 14  
+ 15  
+ 16  
+ 17  
+ 18  
+ 19  
+ 20  
+ 21  
+ 22  
+ 23  
+ 24  
+ 25  
+ 26  
+ 27  gfda
+ 28  g
+ 29  /
+  2  --변수의선언부
+  *
+2행에 오류:
+ORA-06550: 줄 2, 열3:PLS-00103: 심볼 "2"를 만났습니다 다음 중 하나가 기대될 때: 
+begin function package pragma procedure subtype type use 
+<식별자> <큰 따옴표로 구분된 식별자> form 
+current cursor 
+
+
+SQL> ed ql01.sql
+
+SQL> ed pl01.sql
+
+SQL> declare
+  2  --변수의선언부
+  3  begin
+  4  --명령-- java System.out.println();
+  5  dbms_output.put_line('Hello '||'world...');
+  6  
+  7  end;
+  8  /
+Hello world...                                                                  
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> @pl.sql
+SP2-0310: 파일 "pl.sql"을 열 수 없습니다.
+SQL> @pl01.sql
+Hello world...                                                                  
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> ed pl01.sql
+
+SQL> @pl01.sql
+Hello world...                                                                  
+15                                                                              
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> ed pl01.sql
+
+SQL> @pl01.sql
+Hello world...                                                                  
+1+2+3+4+51+2+3+4+5                                                              
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> ed pl01.sql
+
+SQL> @pl01.sql
+Hello world...                                                                  
+1+2+3+4+515                                                                     
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> ed pl01.sql
+
+SQL> @pl01.sql
+Hello world...                                                                  
+1+2+3+4+5=15                                                                    
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> ed pl01.sql
+
+SQL> @pl01.sql
+Hello world...                                                                  
+12345                                                                           
+1+2+3+4+5=15                                                                    
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> ed pl01.sql
+
+SQL> @pl01.sql
+Hello world...                                                                  
+12345                                                                           
+1+2+3+4+5=15                                                                    
+123                                                                             
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> ed pl01.sql
+
+SQL> @pl01.sql
+Hello world...                                                                  
+12345                                                                           
+1+2+3+4+5=15                                                                    
+num1=123                                                                        
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> ed pl01.sql
+
+SQL> @pl01.sql
+Hello world...                                                                  
+12345                                                                           
+1+2+3+4+5=15                                                                    
+num1=123                                                                        
+15                                                                              
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> ed pl01.sql
+
+SQL> @pl01.sql
+Hello world...                                                                  
+12345                                                                           
+1+2+3+4+5=15                                                                    
+num1=123                                                                        
+1+2+3+4+5=15                                                                    
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> ed pl01.sql
+
+SQL> ed pl02.sql
+
+SQL> @pl02.sql
+1234                                                                            
+4321                                                                            
+12                                                                              
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> @pl02.sql
+1234                                                                            
+4321                                                                            
+12                                                                              
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> select * from ex01;
+select * from ex01
+              *
+1행에 오류:
+ORA-00942: 테이블 또는 뷰가 존재하지 않습니다 
+
+
+SQL> create table ex01(num1 number,num2 number);
+
+테이블이 생성되었습니다.
+
+SQL> select * from ex01;
+
+선택된 레코드가 없습니다.
+
+SQL> ed pl02.sql
+
+SQL> @pl02.sql
+1234                                                                            
+4321                                                                            
+12                                                                              
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> select * from ex01;
+
+      NUM1       NUM2                                                           
+---------- ----------                                                           
+      1234       4321                                                           
+
+SQL> roWjspd
+SP2-0042: 알 수 없는 명령어 "roWjspd" - 나머지 줄 무시.
+SQL> ed pl02.sql
+
+SQL> delete from ex01;
+
+1 행이 삭제되었습니다.
+
+SQL> insert into ex01 values (1,1111)
+  2  ;
+
+1 개의 행이 만들어졌습니다.
+
+SQL> @pl02.sql
+1                                                                               
+1111                                                                            
+declare
+*
+1행에 오류:
+ORA-01403: 데이터를 찾을 수 없습니다.
+ORA-06512: 줄 12에서 
+
+
+SQL> ed pl02.sql
+
+SQL> @pl02.sql
+1                                                                               
+1111                                                                            
+declare
+*
+1행에 오류:
+ORA-06502: PL/SQL: 수치 또는 값 오류: 숫자 정도가 너무 큽니다
+ORA-06512: 줄 12에서 
+
+
+SQL> ed pl02.sql
+
+SQL> @pl02.sql
+1                                                                               
+1111                                                                            
+1111                                                                            
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> ed pl02.sql
+
+SQL> select * from ex01;
+
+      NUM1       NUM2                                                           
+---------- ----------                                                           
+         1       1111                                                           
+
+SQL> ed pl02.sql
+
+SQL> ed pl02.sql\
+
+SQL> ed pl02.sql
+
+SQL> create user 1111 identified by 1234;
+create user 1111 identified by 1234
+            *
+1행에 오류:
+ORA-01935: 누락된 사용자 혹은 롤 이름 
+
+
+SQL> create user01 identified by "1234";
+create user01 identified by "1234"
+       *
+1행에 오류:
+ORA-00901: CREATE 명령어가 부적합합니다 
+
+
+SQL> create user user01 identified by "1234";
+create user user01 identified by "1234"
+                                 *
+1행에 오류:
+ORA-01031: 권한이 불충분합니다 
+
+
+SQL> exit

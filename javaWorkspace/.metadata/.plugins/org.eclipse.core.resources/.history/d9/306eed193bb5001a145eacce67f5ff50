@@ -1,0 +1,23 @@
+package com.bit.student;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Score {
+	Student student;
+	List<Integer,Student> list;
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+		String msg = "학생 성적 입력기";
+		
+		msg+="\n-------------------------";
+		msg+="\n학번||\t이름||\t국어||\t영어||\t수학||\t총점||\t평균||";
+		while(true){
+			System.out.println();
+		}
+		
+		
+		
+	}
+}

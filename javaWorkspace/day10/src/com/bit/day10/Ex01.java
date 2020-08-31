@@ -1,0 +1,46 @@
+package com.bit.day10;
+
+
+public class Ex01 {
+
+    int su1=1234;
+    public void func01(){
+        int su1=1111;
+        System.out.println("func01 run....");
+        this.func02();//non-static에서 non-static 호출할때 (this)가 숨어있음.
+        System.out.println("su1="+this.su1);
+        
+    }
+
+    public void func01(Ex01 ex){
+        System.out.println("func01(param:me)run...");
+        System.out.println(ex==this);
+        System.out.println("su1="+ex.su1);
+        ex.func02();    
+    }
+
+    public void func02(){
+        
+        System.out.println("func02 run.....");
+        
+    }
+
+    public Ex01 func03(){//Ex01 객체 데이터 타입을 리턴 받아서
+        System.out.println("func03 run...");
+        return this;
+    }
+    public Ex01 func04(){
+        System.out.println("func04 run..");
+        System.out.println(this);
+        return this;
+    }
+
+    public static void main(String[] args) {
+        Ex01 me=new Ex01();
+        me.func03().func03().func03().func03();
+        
+
+
+
+    }
+}

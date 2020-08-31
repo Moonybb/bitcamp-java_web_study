@@ -1,0 +1,445 @@
+SQL> select sysdate-1,sysdate,sysdate+1 from daul;
+select sysdate-1,sysdate,sysdate+1 from daul
+                                        *
+1행에 오류:
+ORA-00942: 테이블 또는 뷰가 존재하지 않습니다 
+
+
+SQL> select sysdate-1,sysdate,sysdate+1 from dual;
+
+SYSDATE- SYSDATE  SYSDATE+                                                      
+-------- -------- --------                                                      
+20/06/22 20/06/23 20/06/24                                                      
+
+SQL> select sysdate,next_day(sydate,'수요일') from dual;
+select sysdate,next_day(sydate,'수요일') from dual
+                        *
+1행에 오류:
+ORA-00904: "SYDATE": 부적합한 식별자 
+
+
+SQL> select sysdate,next_day(sysdate,'수요일') from dual;
+
+SYSDATE  NEXT_DAY                                                               
+-------- --------                                                               
+20/06/23 20/06/24                                                               
+
+SQL> select sysdate,next_day(sysdate,'금요일') from dual;
+
+SYSDATE  NEXT_DAY                                                               
+-------- --------                                                               
+20/06/23 20/06/26                                                               
+
+SQL> select sysdate,next_day(sysdate,'friday') from dual;
+select sysdate,next_day(sysdate,'friday') from dual
+                                *
+1행에 오류:
+ORA-01846: 지정한 요일이 부적합합니다. 
+
+
+SQL> select sysdate,next_day(sysdate,'월') from dual;
+
+SYSDATE  NEXT_DAY                                                               
+-------- --------                                                               
+20/06/23 20/06/29                                                               
+
+SQL> select sysdate,yester_day(sysdate,'월') from dual;
+select sysdate,yester_day(sysdate,'월') from dual
+               *
+1행에 오류:
+ORA-00904: "YESTER_DAY": 부적합한 식별자 
+
+
+SQL> select sysdate,past_day(sysdate,'월') from dual;
+select sysdate,past_day(sysdate,'월') from dual
+               *
+1행에 오류:
+ORA-00904: "PAST_DAY": 부적합한 식별자 
+
+
+SQL> select sysdate,last_day(sysdate) from dual;
+
+SYSDATE  LAST_DAY                                                               
+-------- --------                                                               
+20/06/23 20/06/30                                                               
+
+SQL> select round(sysdate) from dual;
+
+ROUND(SY                                                                        
+--------                                                                        
+20/06/24                                                                        
+
+SQL> select sysdate,last_day(sysdate,'MONTH') from dual;
+select sysdate,last_day(sysdate,'MONTH') from dual
+               *
+1행에 오류:
+ORA-00909: 인수의 개수가 부적합합니다 
+
+
+SQL> select round(sysdate,'MONTH') from dual;
+
+ROUND(SY                                                                        
+--------                                                                        
+20/07/01                                                                        
+
+SQL> select round(sysdate,'month') from dual;
+
+ROUND(SY                                                                        
+--------                                                                        
+20/07/01                                                                        
+
+SQL> select round(sysdate,'DY\') from dual;
+select round(sysdate,'DY\') from dual
+                     *
+1행에 오류:
+ORA-01898: 정밀도 지정자가 너무 많습니다 
+
+
+SQL> select round(sysdate,'DY') from dual;
+
+ROUND(SY                                                                        
+--------                                                                        
+20/06/21                                                                        
+
+SQL> select ename,sal,comm from emp;
+
+ENAME                       SAL       COMM                                      
+-------------------- ---------- ----------                                      
+SMITH                       800                                                 
+ALLEN                      1600        300                                      
+WARD                       1250        500                                      
+JONES                      2975                                                 
+MARTIN                     1250       1400                                      
+BLAKE                      2850                                                 
+CLARK                      2450                                                 
+SCOTT                      3000                                                 
+KING                       5000                                                 
+TURNER                     1500          0                                      
+ADAMS                      1100                                                 
+
+ENAME                       SAL       COMM                                      
+-------------------- ---------- ----------                                      
+JAMES                       950                                                 
+FORD                       3000                                                 
+MILLER                     1300                                                 
+
+14 개의 행이 선택되었습니다.
+
+SQL> select ename,sal,comm,sal+comm as 연봉 from emp;
+
+ENAME                       SAL       COMM       연봉                           
+-------------------- ---------- ---------- ----------                           
+SMITH                       800                                                 
+ALLEN                      1600        300       1900                           
+WARD                       1250        500       1750                           
+JONES                      2975                                                 
+MARTIN                     1250       1400       2650                           
+BLAKE                      2850                                                 
+CLARK                      2450                                                 
+SCOTT                      3000                                                 
+KING                       5000                                                 
+TURNER                     1500          0       1500                           
+ADAMS                      1100                                                 
+
+ENAME                       SAL       COMM       연봉                           
+-------------------- ---------- ---------- ----------                           
+JAMES                       950                                                 
+FORD                       3000                                                 
+MILLER                     1300                                                 
+
+14 개의 행이 선택되었습니다.
+
+SQL> select comm from emp;
+
+      COMM                                                                      
+----------                                                                      
+                                                                                
+       300                                                                      
+       500                                                                      
+                                                                                
+      1400                                                                      
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+         0                                                                      
+                                                                                
+
+      COMM                                                                      
+----------                                                                      
+                                                                                
+                                                                                
+                                                                                
+
+14 개의 행이 선택되었습니다.
+
+SQL> select nvl(comm,0) from emp;
+
+NVL(COMM,0)                                                                     
+-----------                                                                     
+          0                                                                     
+        300                                                                     
+        500                                                                     
+          0                                                                     
+       1400                                                                     
+          0                                                                     
+          0                                                                     
+          0                                                                     
+          0                                                                     
+          0                                                                     
+          0                                                                     
+
+NVL(COMM,0)                                                                     
+-----------                                                                     
+          0                                                                     
+          0                                                                     
+          0                                                                     
+
+14 개의 행이 선택되었습니다.
+
+SQL> select ename,sal,comm,sal+comm as 연봉 from emp;
+
+ENAME                       SAL       COMM       연봉                           
+-------------------- ---------- ---------- ----------                           
+SMITH                       800                                                 
+ALLEN                      1600        300       1900                           
+WARD                       1250        500       1750                           
+JONES                      2975                                                 
+MARTIN                     1250       1400       2650                           
+BLAKE                      2850                                                 
+CLARK                      2450                                                 
+SCOTT                      3000                                                 
+KING                       5000                                                 
+TURNER                     1500          0       1500                           
+ADAMS                      1100                                                 
+
+ENAME                       SAL       COMM       연봉                           
+-------------------- ---------- ---------- ----------                           
+JAMES                       950                                                 
+FORD                       3000                                                 
+MILLER                     1300                                                 
+
+14 개의 행이 선택되었습니다.
+
+SQL> select nvl(comm,0) from emp;
+
+NVL(COMM,0)                                                                     
+-----------                                                                     
+          0                                                                     
+        300                                                                     
+        500                                                                     
+          0                                                                     
+       1400                                                                     
+          0                                                                     
+          0                                                                     
+          0                                                                     
+          0                                                                     
+          0                                                                     
+          0                                                                     
+
+NVL(COMM,0)                                                                     
+-----------                                                                     
+          0                                                                     
+          0                                                                     
+          0                                                                     
+
+14 개의 행이 선택되었습니다.
+
+SQL> select comm,nvl(comm,0) from emp;
+
+      COMM NVL(COMM,0)                                                          
+---------- -----------                                                          
+                     0                                                          
+       300         300                                                          
+       500         500                                                          
+                     0                                                          
+      1400        1400                                                          
+                     0                                                          
+                     0                                                          
+                     0                                                          
+                     0                                                          
+         0           0                                                          
+                     0                                                          
+
+      COMM NVL(COMM,0)                                                          
+---------- -----------                                                          
+                     0                                                          
+                     0                                                          
+                     0                                                          
+
+14 개의 행이 선택되었습니다.
+
+SQL> select ename,sal,comm,sal+nvl(comm,0) as 연봉 from emp;
+
+ENAME                       SAL       COMM       연봉                           
+-------------------- ---------- ---------- ----------                           
+SMITH                       800                   800                           
+ALLEN                      1600        300       1900                           
+WARD                       1250        500       1750                           
+JONES                      2975                  2975                           
+MARTIN                     1250       1400       2650                           
+BLAKE                      2850                  2850                           
+CLARK                      2450                  2450                           
+SCOTT                      3000                  3000                           
+KING                       5000                  5000                           
+TURNER                     1500          0       1500                           
+ADAMS                      1100                  1100                           
+
+ENAME                       SAL       COMM       연봉                           
+-------------------- ---------- ---------- ----------                           
+JAMES                       950                   950                           
+FORD                       3000                  3000                           
+MILLER                     1300                  1300                           
+
+14 개의 행이 선택되었습니다.
+
+SQL> select ename,deptno from emp;
+
+ENAME                    DEPTNO                                                 
+-------------------- ----------                                                 
+SMITH                        20                                                 
+ALLEN                        30                                                 
+WARD                         30                                                 
+JONES                        20                                                 
+MARTIN                       30                                                 
+BLAKE                        30                                                 
+CLARK                        10                                                 
+SCOTT                        20                                                 
+KING                         10                                                 
+TURNER                       30                                                 
+ADAMS                        20                                                 
+
+ENAME                    DEPTNO                                                 
+-------------------- ----------                                                 
+JAMES                        30                                                 
+FORD                         20                                                 
+MILLER                       10                                                 
+
+14 개의 행이 선택되었습니다.
+
+SQL> select * from dept;
+
+    DEPTNO DNAME                        LOC                                     
+---------- ---------------------------- --------------------------              
+        10 ACCOUNTING                   NEW YORK                                
+        20 RESEARCH                     DALLAS                                  
+        30 SALES                        CHICAGO                                 
+        40 OPERATIONS                   BOSTON                                  
+        50 관리부                       서울                                    
+
+SQL> select ename, decode(deptno,10,accounting,20,reseach,30,sales,40,oprations) from emp;
+select ename, decode(deptno,10,accounting,20,reseach,30,sales,40,oprations) from emp
+                                                                 *
+1행에 오류:
+ORA-00904: "OPRATIONS": 부적합한 식별자 
+
+
+SQL> select ename, decode(deptno,10,'accounting',20,'reseach',30,'sales',40,'oprations') from emp;
+
+ENAME                DECODE(DEPTNO,10,'AC                                       
+-------------------- --------------------                                       
+SMITH                reseach                                                    
+ALLEN                sales                                                      
+WARD                 sales                                                      
+JONES                reseach                                                    
+MARTIN               sales                                                      
+BLAKE                sales                                                      
+CLARK                accounting                                                 
+SCOTT                reseach                                                    
+KING                 accounting                                                 
+TURNER               sales                                                      
+ADAMS                reseach                                                    
+
+ENAME                DECODE(DEPTNO,10,'AC                                       
+-------------------- --------------------                                       
+JAMES                sales                                                      
+FORD                 reseach                                                    
+MILLER               accounting                                                 
+
+14 개의 행이 선택되었습니다.
+
+SQL> li
+  1* select ename, decode(deptno,10,'accounting',20,'reseach',30,'sales',40,'oprations') from emp
+SQL> list
+  1* select ename, decode(deptno,10,'accounting',20,'reseach',30,'sales',40,'oprations') from emp
+SQL> l
+  1* select ename, decode(deptno,10,'accounting',20,'reseach',30,'sales',40,'oprations') from emp
+SQL> edit ex12.sql
+
+SQL> edit ex12
+
+SQL> @ex12
+SQL> edit ex12
+
+SQL> l
+  1* select ename, decode(deptno,10,'accounting',20,'reseach',30,'sales',40,'oprations') from emp
+SQL> save ex12
+SP2-0540: "ex12.sql" 파일은 이미 존재합니다.
+"SAVE 파일명[.ext]  REPLACE"을 사용합니다.
+SQL> 
+SQL> save ex12
+file ex12.sql(이)가 생성되었습니다
+SQL> select ename,
+  2  case when deptno=10 then '경리',
+  3  case when deptno=10 then '시장조사',
+  4  
+SQL> 
+SQL> select ename,
+  2  case when deptno=10 then '경리',
+  3  case when deptno=20 then '시장조사',
+  4  case when deptno=30 then '영업',
+  5  case when deptno=40 then '오퍼레이션'
+  6  end from emp;
+case when deptno=20 then '시장조사',
+*
+3행에 오류:
+ORA-00905: 누락된 키워드 
+
+
+SQL> save ex13
+file ex13.sql(이)가 생성되었습니다
+SQL> edit ex13
+
+SQL> @ex13
+	when deptno=20 then '시장조사',
+*
+3행에 오류:
+ORA-00905: 누락된 키워드 
+
+
+SQL> edit ex13
+
+SQL> @ex13
+	when deptno=20 then '시장조사',
+*
+3행에 오류:
+ORA-00905: 누락된 키워드 
+
+
+SQL> edit ex13
+
+SQL> @ex13
+
+ENAME                CASEWHENDEPTNO=10THE                                       
+-------------------- --------------------                                       
+SMITH                research                                                   
+ALLEN                sales                                                      
+WARD                 sales                                                      
+JONES                research                                                   
+MARTIN               sales                                                      
+BLAKE                sales                                                      
+CLARK                accounting                                                 
+SCOTT                research                                                   
+KING                 accounting                                                 
+TURNER               sales                                                      
+ADAMS                research                                                   
+
+ENAME                CASEWHENDEPTNO=10THE                                       
+-------------------- --------------------                                       
+JAMES                sales                                                      
+FORD                 research                                                   
+MILLER               accounting                                                 
+
+14 개의 행이 선택되었습니다.
+
+SQL> spool off

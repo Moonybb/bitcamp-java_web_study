@@ -1,0 +1,58 @@
+package com.bit.studentscorever1;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.Set;
+
+public class StudentScore {
+	
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		Map<Integer, Student> list = new HashMap<>();
+		System.out.println("학생 성적 입력 및 관리기기");
+		System.out.println("---------------------------------");
+		
+		
+		while(true){
+			System.out.print("1.전체 2.상세 3.입력 4.수정 5.삭제 0.종료>>");
+			int input = sc.nextInt();
+			sc.nextLine();
+			if(input==0){
+				System.out.println("이용해 주셔서 감사합니다.");
+				break;
+			}else if(input==1){
+				System.out.print("학번||\t이름||\t국어||\t영어||\t수학||\n");
+				Set<Integer> student = list.keySet();
+				Iterator iterator = student.iterator();
+				
+				
+			}else if(input==2){
+				
+			}else if(input==3){
+				System.out.print("학번을 입력 해주세요>>");
+				int num= sc.nextInt();
+				Student student = new Student(num);
+				sc.nextLine();//오류 발생 방지
+				System.out.print("이름을 입력해주세요>>");
+				student.saveName(sc.nextLine());
+				System.out.print("국어 성적을 입력해주세요>> ");
+				student.saveKorean(sc.nextInt());
+				System.out.print("영어 성적을 입력해주세요>> ");
+				student.saveKorean(sc.nextInt());
+				System.out.print("수학 성적을 입력해주세요>> ");
+				student.saveKorean(sc.nextInt());
+				list.put(num,student);
+				
+				
+			}else if(input==4){
+				
+			}else if(input==5){
+				
+			}
+			
+		}
+		
+		
+	}
+}

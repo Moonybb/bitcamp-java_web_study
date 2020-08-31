@@ -1,0 +1,78 @@
+package com.bit.web01;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.net.InetAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.net.SocketAddress;
+
+public class Server extends Thread{
+	Socket socket;
+	
+	public Server(Socket socket){
+		this.socket=socket;
+	}
+	@Override
+	public void run() {
+		OutputStream outputStream = null;
+		FileInputStream fileInputStream = null;
+		try {
+			SocketAddress socketAddress = socket.getRemoteSocketAddress();
+			System.out.println(socketAddress.toString());
+			outputStream = socket.getOutputStream();
+			////////////////
+			outputStream.write("HTTP/1.1 200 OK\r\n".getBytes());
+			outputStream.write("Content-type: text/plain; charset=utf-8 \r\n".getBytes());
+			outputStream.write("\r\n".getBytes());//본문과 해더 정보의 구분 개행을 하면 하나의 정보로 인식을 하게 된다.
+			
+//			outputStream.write("<h1>Hello World</h1>".getBytes());
+			File file = new File("www/abc.txt");
+			fileInputStream = new FileInputStream(file);
+			int su=-1;
+			while((su=fileInputStream.read())!=-1){
+				outputStream.write(su);
+			}
+			
+			outputStream.flush();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally{
+			try {
+				if(fileInputStream!=null)fileInputStream.close();
+				if(outputStream!=null)outputStream.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	public static void main(String[] args) {
+		int port = 8080;
+		ServerSocket serverSocket = null;
+		
+		try {
+			serverSocket = new ServerSocket(port);
+			while(true){
+				Socket socket = serverSocket.accept();
+				Server server = new Server(socket);
+				server.start();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(serverSocket!=null)serverSocket.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
+		
+		
+	}
+
+}

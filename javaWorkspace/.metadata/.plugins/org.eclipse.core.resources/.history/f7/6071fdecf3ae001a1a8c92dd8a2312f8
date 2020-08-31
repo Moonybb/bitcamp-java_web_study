@@ -1,0 +1,119 @@
+package com.bit.tcp;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.Socket;
+import java.util.Scanner;
+
+
+public class UpDownClient implements ActionListener {
+   private Scanner scanner;
+   private UpDownUi ui;
+   private Socket socket;
+   private InputStream inputStream;
+   private OutputStream outputStream;
+   private InputStreamReader inputStreamReader;
+   private OutputStreamWriter outputStreamWriter;
+   private BufferedReader bufReader;
+   private BufferedWriter bufWriter;
+   private DataInputStream dataInputStream;
+   private DataOutputStream dataOutputStream;
+   
+   public UpDownClient(Socket socket) {
+         this.socket = socket;
+         ui = new UpDownUi();
+         ui.chatTf.addActionListener(this);
+         input(this.socket);
+         
+         
+         
+         ui.inputTf.addActionListener(this);
+      
+   }
+   
+   
+   public void input(Socket socket){
+      try {
+         inputStream = socket.getInputStream();
+         dataInputStream = new DataInputStream(inputStream);
+         while(true){
+            String msg = dataInputStream.readUTF();
+            ui.ta.append(msg+"\n");
+//            if(msg!=null)break;
+            if(msg.isEmpty())break;
+            
+         }
+      } catch (IOException e) {
+         e.printStackTrace();
+      }
+      
+      
+   }
+
+
+
+   @Override
+   public void actionPerformed(ActionEvent e) {
+      Object obj = e.getSource();
+      
+      if(obj == ui.chatTf){
+//            ui.ta.append(ui.charTf.getText() + "\n");
+//               ui.charTf.setText("");
+//               ui.charTf.requestFocus();
+          try {
+            outputStream = socket.getOutputStream();
+            dataOutputStream = new DataOutputStream(outputStream);
+            dataOutputStream.writeUTF(ui.chatTf.getText());
+            dataOutputStream.flush();
+            dataOutputStream.flush();
+            
+            ui.chatTf.setText("");
+            ui.chatTf.setText("");
+            
+           } catch (IOException e1) {
+            e1.printStackTrace();
+         }
+           
+        }else if(obj == ui.inputTf){
+           try {
+              outputStream = socket.getOutputStream();
+            dataOutputStream = new DataOutputStream(outputStream);
+            dataOutputStream.writeUTF(ui.chatTf.getText());
+            dataOutputStream.flush();
+            ui.chatTf.setText("");
+            ui.chatTf.setText("");
+            
+            
+         } catch (IOException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+         }
+           
+           
+        }
+      
+       
+      
+   }
+   public static void main(String[] args) {
+      
+      try {
+         Socket socket = new Socket("localhost",8080);
+         UpDownClient udc = new UpDownClient(socket);
+      } catch (IOException e) {
+         e.printStackTrace();
+      }
+      
+   }
+
+   
+}

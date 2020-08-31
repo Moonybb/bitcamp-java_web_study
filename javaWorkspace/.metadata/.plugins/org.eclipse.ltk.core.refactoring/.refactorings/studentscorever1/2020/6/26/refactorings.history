@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename method &apos;com.bit.studentscorever1.Student.load()&apos; to &apos;loadview&apos;&#x0D;&#x0A;- Original project: &apos;studentscorever1&apos;&#x0D;&#x0A;- Original element: &apos;com.bit.studentscorever1.Student.load()&apos;&#x0D;&#x0A;- Renamed element: &apos;com.bit.studentscorever1.Student.loadview()&apos;&#x0D;&#x0A;- Update references to refactored element" delegate="false" deprecate="false" description="Rename method &apos;load&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.method" input="/src&lt;com.bit.studentscorever1{Student.java[Student~load" name="loadview" references="true" stamp="1592978608274" version="1.0"/>
+</session>

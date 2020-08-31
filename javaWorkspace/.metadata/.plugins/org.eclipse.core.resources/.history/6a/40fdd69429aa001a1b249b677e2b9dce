@@ -1,0 +1,40 @@
+package com.bit.day25;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+
+public class ObjectStream1 {
+	
+	public static void main(String[] args) {
+		String path = "data4.bin";
+		File file = new File(path);
+		
+		FileInputStream fis = null;
+		ObjectInputStream ois = null;
+		
+		try {
+			fis=new FileInputStream(file);
+			ois = new ObjectInputStream(fis);
+			
+			
+			String msg = (String)ois.readObject();
+			
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally{
+			try {
+				if(fis!=null)fis.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
+}

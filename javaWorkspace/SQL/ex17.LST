@@ -1,0 +1,1297 @@
+SQL> create table ex17(num number,name vachar2(15));
+create table ex17(num number,name vachar2(15))
+                                         *
+1Çà¿¡ ¿À·ù:
+ORA-00907: ´©¶ôµÈ ¿ì°ýÈ£ 
+
+
+SQL> create table ex17(num number,name varchar2(15));
+
+Å×ÀÌºíÀÌ »ý¼ºµÇ¾ú½À´Ï´Ù.
+
+SQL> insert into ex17 (name) values ('no1');
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> insert into ex17 (name) values ('no2');
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> select * from ex17;
+
+       NUM NAME                                                                 
+---------- ------------------------------                                       
+           no1                                                                  
+           no2                                                                  
+
+SQL> insert into ex17 (name) values ('no1');
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> select * from ex17;
+
+       NUM NAME                                                                 
+---------- ------------------------------                                       
+           no1                                                                  
+           no2                                                                  
+           no1                                                                  
+
+SQL> select * from ex17 where name='no2';
+
+       NUM NAME                                                                 
+---------- ------------------------------                                       
+           no2                                                                  
+
+SQL> select * from ex17 where name='no1';
+
+       NUM NAME                                                                 
+---------- ------------------------------                                       
+           no1                                                                  
+           no1                                                                  
+
+SQL> drop table ex17
+  2  ;
+
+Å×ÀÌºíÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù.
+
+SQL> create table ex17(num number, name varchar2(15) not null);
+
+Å×ÀÌºíÀÌ »ý¼ºµÇ¾ú½À´Ï´Ù.
+
+SQL> insert into ex17 values (1,'no1');
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> insert into ex17 values (1,'no2');
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> insert into ex17 values (1,'');
+insert into ex17 values (1,'')
+                           *
+1Çà¿¡ ¿À·ù:
+ORA-01400: NULLÀ» ("SCOTT"."EX17"."NAME") ¾È¿¡ »ðÀÔÇÒ ¼ö ¾ø½À´Ï´Ù 
+
+
+SQL> select * from ex17;
+
+       NUM NAME                                                                 
+---------- ------------------------------                                       
+         1 no1                                                                  
+         1 no2                                                                  
+
+SQL> insert into ex17(num) values (3);
+insert into ex17(num) values (3)
+*
+1Çà¿¡ ¿À·ù:
+ORA-01400: NULLÀ» ("SCOTT"."EX17"."NAME") ¾È¿¡ »ðÀÔÇÒ ¼ö ¾ø½À´Ï´Ù 
+
+
+SQL> desc dept;
+ ÀÌ¸§                                      ³Î?      À¯Çü
+ ----------------------------------------- -------- ----------------------------
+ DEPTNO                                    NOT NULL NUMBER(2)
+ DNAME                                              VARCHAR2(14)
+ LOC                                                VARCHAR2(13)
+
+SQL> insert into dept(dname,loc) from ('test,'test');
+ERROR:
+ORA-01756: ´ÜÀÏ ÀÎ¿ëºÎ¸¦ ÁöÁ¤ÇØ ÁÖ½Ê½Ã¿À 
+
+
+SQL> insert into dept(dname,loc) from ('test','test');
+insert into dept(dname,loc) from ('test','test')
+                            *
+1Çà¿¡ ¿À·ù:
+ORA-00926: ´©¶ôµÈ VALUES Å°¿öµå 
+
+
+SQL> insert into dept(dname,loc) values('test','test');
+insert into dept(dname,loc) values('test','test')
+*
+1Çà¿¡ ¿À·ù:
+ORA-01400: NULLÀ» ("SCOTT"."DEPT"."DEPTNO") ¾È¿¡ »ðÀÔÇÒ ¼ö ¾ø½À´Ï´Ù 
+
+
+SQL> drop table ex17;
+
+Å×ÀÌºíÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù.
+
+SQL> create table ex17(num number uique , name varchar2(15) not null);
+create table ex17(num number uique , name varchar2(15) not null)
+                             *
+1Çà¿¡ ¿À·ù:
+ORA-00907: ´©¶ôµÈ ¿ì°ýÈ£ 
+
+
+SQL> create table ex17(num number unique , name varchar2(15) not null);
+
+Å×ÀÌºíÀÌ »ý¼ºµÇ¾ú½À´Ï´Ù.
+
+SQL> insert into ex17 values (1,'test1');
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> insert into ex17 values (2,'test2');
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> insert into ex17 values (1,'test1');
+insert into ex17 values (1,'test1')
+*
+1Çà¿¡ ¿À·ù:
+ORA-00001: ¹«°á¼º Á¦¾à Á¶°Ç(SCOTT.SYS_C003999)¿¡ À§¹èµË´Ï´Ù 
+
+
+SQL> select * from ex17;
+
+       NUM NAME                                                                 
+---------- ------------------------------                                       
+         1 test1                                                                
+         2 test2                                                                
+
+SQL> insert into ex17 values (null,'test3');
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> select * from ex17;
+
+       NUM NAME                                                                 
+---------- ------------------------------                                       
+         1 test1                                                                
+         2 test2                                                                
+           test3                                                                
+
+SQL> insert into ex17 values (null,'test4');
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> select * from ex17;
+
+       NUM NAME                                                                 
+---------- ------------------------------                                       
+         1 test1                                                                
+         2 test2                                                                
+           test3                                                                
+           test4                                                                
+
+SQL> drop table ex17;
+
+Å×ÀÌºíÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù.
+
+SQL> desc ex16
+ ÀÌ¸§                                      ³Î?      À¯Çü
+ ----------------------------------------- -------- ----------------------------
+ NUM                                                NUMBER
+ SUB                                                VARCHAR2(15)
+
+SQL> create table ex17(num number unique not null, name varchar2(15) not null);
+
+Å×ÀÌºíÀÌ »ý¼ºµÇ¾ú½À´Ï´Ù.
+
+SQL> insert into ex17 values (1,'test1');
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> insert into ex17 values (2,'test2');
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> insert into ex17 values (3,'test3');
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> insert into ex17 values (null,'test4');
+insert into ex17 values (null,'test4')
+                         *
+1Çà¿¡ ¿À·ù:
+ORA-01400: NULLÀ» ("SCOTT"."EX17"."NUM") ¾È¿¡ »ðÀÔÇÒ ¼ö ¾ø½À´Ï´Ù 
+
+
+SQL> insert into ex17 values (1,'test4');
+insert into ex17 values (1,'test4')
+*
+1Çà¿¡ ¿À·ù:
+ORA-00001: ¹«°á¼º Á¦¾à Á¶°Ç(SCOTT.SYS_C004002)¿¡ À§¹èµË´Ï´Ù 
+
+
+SQL> select * from ex17
+  2  ;
+
+       NUM NAME                                                                 
+---------- ------------------------------                                       
+         1 test1                                                                
+         2 test2                                                                
+         3 test3                                                                
+
+SQL> @ex17.sql
+SP2-0310: ÆÄÀÏ "ex17.sql"À» ¿­ ¼ö ¾ø½À´Ï´Ù.
+SQL> run ex17.sql
+  1  select * from ex17
+  2* 
+
+       NUM NAME                                                                 
+---------- ------------------------------                                       
+         1 test1                                                                
+         2 test2                                                                
+         3 test3                                                                
+
+SQL> ex17.sql
+SP2-0042: ¾Ë ¼ö ¾ø´Â ¸í·É¾î "ex17.sql" - ³ª¸ÓÁö ÁÙ ¹«½Ã.
+SQL> notepad ex17.sql
+SP2-0734: "notepad ex..."(À¸)·Î ½ÃÀÛµÇ´Â ¾Ë ¼ö ¾ø´Â ¸í·É - ³ª¸ÓÁö ÁÙÀº ¹«½ÃµÇ¾ú½À´Ï´Ù.
+SQL> @ex17.sql
+create table ex17(
+             *
+1Çà¿¡ ¿À·ù:
+ORA-00955: ±âÁ¸ÀÇ °´Ã¼°¡ ÀÌ¸§À» »ç¿ëÇÏ°í ÀÖ½À´Ï´Ù. 
+
+
+SQL> @ex17.sql
+
+Å×ÀÌºíÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù.
+
+
+Å×ÀÌºíÀÌ »ý¼ºµÇ¾ú½À´Ï´Ù.
+
+SQL> create table ex17(
+  2  num number,
+  3  
+SQL> ed ex17.sql
+
+SQL> @ex17.sql
+
+Å×ÀÌºíÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù.
+
+
+Å×ÀÌºíÀÌ »ý¼ºµÇ¾ú½À´Ï´Ù.
+
+SQL> insert into ex17 values (1,'test1');
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> insert into ex17 values (2,'test2');
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> insert into ex17 values (1,'test3');
+insert into ex17 values (1,'test3')
+*
+1Çà¿¡ ¿À·ù:
+ORA-00001: ¹«°á¼º Á¦¾à Á¶°Ç(SCOTT.SYS_C004006)¿¡ À§¹èµË´Ï´Ù 
+
+
+SQL> insert into ex17 values (null,'test3');
+insert into ex17 values (null,'test3')
+                         *
+1Çà¿¡ ¿À·ù:
+ORA-01400: NULLÀ» ("SCOTT"."EX17"."NUM") ¾È¿¡ »ðÀÔÇÒ ¼ö ¾ø½À´Ï´Ù 
+
+
+SQL> desc ex17
+ ÀÌ¸§                                      ³Î?      À¯Çü
+ ----------------------------------------- -------- ----------------------------
+ NUM                                       NOT NULL NUMBER
+ NAME                                      NOT NULL VARCHAR2(15)
+
+SQL> ed ex17.sql
+
+SQL> ed ex18.sql
+
+SQL> @ex18.sql
+
+Å×ÀÌºíÀÌ »ý¼ºµÇ¾ú½À´Ï´Ù.
+
+SQL> insert into ex18 values (1,'test1');
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> insert into ex18 values (2,'test2');
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> insert into ex18 values (1,'test3');
+insert into ex18 values (1,'test3')
+*
+1Çà¿¡ ¿À·ù:
+ORA-00001: ¹«°á¼º Á¦¾à Á¶°Ç(SCOTT.SYS_C004007)¿¡ À§¹èµË´Ï´Ù 
+
+
+SQL> insert into ex18 values (null,'test3');
+insert into ex18 values (null,'test3')
+                         *
+1Çà¿¡ ¿À·ù:
+ORA-01400: NULLÀ» ("SCOTT"."EX18"."NUM") ¾È¿¡ »ðÀÔÇÒ ¼ö ¾ø½À´Ï´Ù 
+
+
+SQL> alter table ex18 modify(name varchar2(15) not null);
+
+Å×ÀÌºíÀÌ º¯°æµÇ¾ú½À´Ï´Ù.
+
+SQL> insert into ex18 values (3.null);
+insert into ex18 values (3.null)
+                           *
+1Çà¿¡ ¿À·ù:
+ORA-00917: ´©¶ôµÈ ÄÞ¸¶ 
+
+
+SQL> insert into ex18 values (3mnull);
+insert into ex18 values (3mnull)
+                          *
+1Çà¿¡ ¿À·ù:
+ORA-00917: ´©¶ôµÈ ÄÞ¸¶ 
+
+
+SQL> insert into ex18 values (3,null);
+insert into ex18 values (3,null)
+                           *
+1Çà¿¡ ¿À·ù:
+ORA-01400: NULLÀ» ("SCOTT"."EX18"."NAME") ¾È¿¡ »ðÀÔÇÒ ¼ö ¾ø½À´Ï´Ù 
+
+
+SQL> insert into ex18 values (3,'test');
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> select * from ex18
+  2  ;
+
+       NUM NAME                                                                 
+---------- ------------------------------                                       
+         1 test1                                                                
+         2 test2                                                                
+         3 test                                                                 
+
+SQL> ed ex18.sql
+
+SQL> @ex18.sql
+
+Å×ÀÌºíÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù.
+
+
+Å×ÀÌºíÀÌ »ý¼ºµÇ¾ú½À´Ï´Ù.
+
+
+Å×ÀÌºíÀÌ º¯°æµÇ¾ú½À´Ï´Ù.
+
+
+Å×ÀÌºíÀÌ º¯°æµÇ¾ú½À´Ï´Ù.
+
+SQL> select * from ex18;
+
+¼±ÅÃµÈ ·¹ÄÚµå°¡ ¾ø½À´Ï´Ù.
+
+SQL> insert into ex18 values (1,'test1);
+ERROR:
+ORA-01756: ´ÜÀÏ ÀÎ¿ëºÎ¸¦ ÁöÁ¤ÇØ ÁÖ½Ê½Ã¿À 
+
+
+SQL> insert into ex18 values (1,'test1');
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> insert into ex18 values (2,'test2');
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> insert into ex18 values (3,'test3');
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> insert into ex18 values (,'test3');
+insert into ex18 values (,'test3')
+                         *
+1Çà¿¡ ¿À·ù:
+ORA-00936: ´©¶ôµÈ Ç¥Çö½Ä 
+
+
+SQL> insert into ex18 values (null,'test3');
+insert into ex18 values (null,'test3')
+                         *
+1Çà¿¡ ¿À·ù:
+ORA-01400: NULLÀ» ("SCOTT"."EX18"."NUM") ¾È¿¡ »ðÀÔÇÒ ¼ö ¾ø½À´Ï´Ù 
+
+
+SQL> insert into ex18 values (1,'test3');
+insert into ex18 values (1,'test3')
+*
+1Çà¿¡ ¿À·ù:
+ORA-00001: ¹«°á¼º Á¦¾à Á¶°Ç(SCOTT.SYS_C004010)¿¡ À§¹èµË´Ï´Ù 
+
+
+SQL> ed ex18.sql
+
+SQL> @ex18.sql
+
+Å×ÀÌºíÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù.
+
+
+Å×ÀÌºíÀÌ »ý¼ºµÇ¾ú½À´Ï´Ù.
+
+
+Å×ÀÌºíÀÌ º¯°æµÇ¾ú½À´Ï´Ù.
+
+
+Å×ÀÌºíÀÌ º¯°æµÇ¾ú½À´Ï´Ù.
+
+SQL> desc ex18
+ ÀÌ¸§                                      ³Î?      À¯Çü
+ ----------------------------------------- -------- ----------------------------
+ NUM                                       NOT NULL NUMBER
+ NAME                                      NOT NULL VARCHAR2(15)
+
+SQL> insert into ex18 values (1,'test1');
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> insert into ex18 values (2,'test2');
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> insert into ex18 values (1,'test1');
+insert into ex18 values (1,'test1')
+*
+1Çà¿¡ ¿À·ù:
+ORA-00001: ¹«°á¼º Á¦¾à Á¶°Ç(SCOTT.SYS_C004012)¿¡ À§¹èµË´Ï´Ù 
+
+
+SQL> insert into ex18 values (null,test2);
+insert into ex18 values (null,test2)
+                              *
+1Çà¿¡ ¿À·ù:
+ORA-00984: ¿­À» »ç¿ëÇÒ ¼ö ¾ø½À´Ï´Ù 
+
+
+SQL> insert into ex18 values (null,'test2');
+insert into ex18 values (null,'test2')
+                         *
+1Çà¿¡ ¿À·ù:
+ORA-01400: NULLÀ» ("SCOTT"."EX18"."NUM") ¾È¿¡ »ðÀÔÇÒ ¼ö ¾ø½À´Ï´Ù 
+
+
+SQL> ed ex19.sql
+
+SQL> @ex19.sql
+SP2-0042: ¾Ë ¼ö ¾ø´Â ¸í·É¾î ")" - ³ª¸ÓÁö ÁÙ ¹«½Ã.
+SQL> ed ex19.sql
+
+SQL> ed ex19.sql
+
+SQL> @ex19.sql
+SP2-0734: "s-- ì œì•½..."(À¸)·Î ½ÃÀÛµÇ´Â ¾Ë ¼ö ¾ø´Â ¸í·É - ³ª¸ÓÁö ÁÙÀº ¹«½ÃµÇ¾ú½À´Ï´Ù.
+SP2-0042: ¾Ë ¼ö ¾ø´Â ¸í·É¾î ")" - ³ª¸ÓÁö ÁÙ ¹«½Ã.
+SQL> ed ex19.sql
+
+SQL> @ex19.sql
+SP2-0042: ¾Ë ¼ö ¾ø´Â ¸í·É¾î ")" - ³ª¸ÓÁö ÁÙ ¹«½Ã.
+SQL> @ ex19.sql
+SP2-0042: ¾Ë ¼ö ¾ø´Â ¸í·É¾î ")" - ³ª¸ÓÁö ÁÙ ¹«½Ã.
+SQL> ed ex19.sql
+
+SQL> ed ex19.sql
+
+SQL> @ ex19.sql
+SP2-0042: ¾Ë ¼ö ¾ø´Â ¸í·É¾î ")" - ³ª¸ÓÁö ÁÙ ¹«½Ã.
+SQL> ed ex19.sql
+
+SQL> @ ex19.sql
+
+Å×ÀÌºíÀÌ »ý¼ºµÇ¾ú½À´Ï´Ù.
+
+SQL> alter table ex19 drop constraint ex19_num_pk;
+
+Å×ÀÌºíÀÌ º¯°æµÇ¾ú½À´Ï´Ù.
+
+SQL> insert into ex19 values (1,'test3');
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> select * from ex19;
+
+       NUM NAME                                                                 
+---------- ------------------------------                                       
+         1 test3                                                                
+
+SQL> drop table ex19;
+
+Å×ÀÌºíÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù.
+
+SQL> ed ex19.sql
+
+SQL> @ex19.sql
+
+Å×ÀÌºíÀÌ »ý¼ºµÇ¾ú½À´Ï´Ù.
+
+SQL> desc ex19
+ ÀÌ¸§                                      ³Î?      À¯Çü
+ ----------------------------------------- -------- ----------------------------
+ NUM                                       NOT NULL NUMBER
+ NAME                                               VARCHAR2(15)
+
+SQL> insert into ex19 values (1,'test1');
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> insert into ex19 values (2,
+  2  'test2
+  3  ');
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> insert into ex19 values (null,'test1');
+insert into ex19 values (null,'test1')
+                         *
+1Çà¿¡ ¿À·ù:
+ORA-01400: NULLÀ» ("SCOTT"."EX19"."NUM") ¾È¿¡ »ðÀÔÇÒ ¼ö ¾ø½À´Ï´Ù 
+
+
+SQL> insert into ex19 values (1,'test1');
+insert into ex19 values (1,'test1')
+*
+1Çà¿¡ ¿À·ù:
+ORA-00001: ¹«°á¼º Á¦¾à Á¶°Ç(SCOTT.EX19_NUM_PK)¿¡ À§¹èµË´Ï´Ù 
+
+
+SQL> alter table ex19 drop constraint ex19_num_pk;
+
+Å×ÀÌºíÀÌ º¯°æµÇ¾ú½À´Ï´Ù.
+
+SQL> insert into ex19 values (1,'test3');
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> select * from ex19;
+
+       NUM NAME                                                                 
+---------- ------------------------------                                       
+         1 test1                                                                
+         2 test2                                                                
+         1 test3                                                                
+
+SQL>  o   K
+SP2-0042: ¾Ë ¼ö ¾ø´Â ¸í·É¾î "o   K" - ³ª¸ÓÁö ÁÙ ¹«½Ã.
+SQL> alter table ex19 add constraint ex19_num_pk primary key(num);
+alter table ex19 add constraint ex19_num_pk primary key(num)
+                                *
+1Çà¿¡ ¿À·ù:
+ORA-02437: (SCOTT.EX19_NUM_PK)À» °ËÁõÇÒ ¼ö ¾ø½À´Ï´Ù - Àß¸øµÈ ±âº» Å°ÀÔ´Ï´Ù 
+
+
+SQL> delete from ex19;
+
+3 ÇàÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù.
+
+SQL> alter table ex19 add constraint ex19_num_pk primary key(num);
+
+Å×ÀÌºíÀÌ º¯°æµÇ¾ú½À´Ï´Ù.
+
+SQL> insert into ex19 values (1,'test1');
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> insert into ex19 values (2,'test2');
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> insert into ex19 values (1,'test1');
+insert into ex19 values (1,'test1')
+*
+1Çà¿¡ ¿À·ù:
+ORA-00001: ¹«°á¼º Á¦¾à Á¶°Ç(SCOTT.EX19_NUM_PK)¿¡ À§¹èµË´Ï´Ù 
+
+
+SQL> select * from ex19;
+
+       NUM NAME                                                                 
+---------- ------------------------------                                       
+         1 test1                                                                
+         2 test2                                                                
+
+SQL> desc ex19;
+ ÀÌ¸§                                      ³Î?      À¯Çü
+ ----------------------------------------- -------- ----------------------------
+ NUM                                       NOT NULL NUMBER
+ NAME                                               VARCHAR2(15)
+
+SQL> insert into ex19 values (1,'test3');
+insert into ex19 values (1,'test3')
+*
+1Çà¿¡ ¿À·ù:
+ORA-00001: ¹«°á¼º Á¦¾à Á¶°Ç(SCOTT.EX19_NUM_PK)¿¡ À§¹èµË´Ï´Ù 
+
+
+SQL> alter table ex18 drop constraint SYS_C0004010;
+alter table ex18 drop constraint SYS_C0004010
+                                 *
+1Çà¿¡ ¿À·ù:
+ORA-02443: Á¸ÀçÇÏÁö ¾Ê´Â Á¦¾à - »èÁ¦ÇÒ ¼ö ¾ø½À´Ï´Ù 
+
+
+SQL> alter table ex18 drop constraint SYS_C004010;
+alter table ex18 drop constraint SYS_C004010
+                                 *
+1Çà¿¡ ¿À·ù:
+ORA-02443: Á¸ÀçÇÏÁö ¾Ê´Â Á¦¾à - »èÁ¦ÇÒ ¼ö ¾ø½À´Ï´Ù 
+
+
+SQL> alter table ex18 drop constraint SYS_CO04010;
+alter table ex18 drop constraint SYS_CO04010
+                                 *
+1Çà¿¡ ¿À·ù:
+ORA-02443: Á¸ÀçÇÏÁö ¾Ê´Â Á¦¾à - »èÁ¦ÇÒ ¼ö ¾ø½À´Ï´Ù 
+
+
+SQL> alter table ex18 drop constraint SYS_COI4010;
+alter table ex18 drop constraint SYS_COI4010
+                                 *
+1Çà¿¡ ¿À·ù:
+ORA-02443: Á¸ÀçÇÏÁö ¾Ê´Â Á¦¾à - »èÁ¦ÇÒ ¼ö ¾ø½À´Ï´Ù 
+
+
+SQL> alter table ex18 drop constraint SYS_COO4010;
+alter table ex18 drop constraint SYS_COO4010
+                                 *
+1Çà¿¡ ¿À·ù:
+ORA-02443: Á¸ÀçÇÏÁö ¾Ê´Â Á¦¾à - »èÁ¦ÇÒ ¼ö ¾ø½À´Ï´Ù 
+
+
+SQL> alter table ex18 drop constraint SYS_C004010;
+alter table ex18 drop constraint SYS_C004010
+                                 *
+1Çà¿¡ ¿À·ù:
+ORA-02443: Á¸ÀçÇÏÁö ¾Ê´Â Á¦¾à - »èÁ¦ÇÒ ¼ö ¾ø½À´Ï´Ù 
+
+
+SQL> insert into ex19 values (1,'test3');
+insert into ex19 values (1,'test3')
+*
+1Çà¿¡ ¿À·ù:
+ORA-00001: ¹«°á¼º Á¦¾à Á¶°Ç(SCOTT.EX19_NUM_PK)¿¡ À§¹èµË´Ï´Ù 
+
+
+SQL> ed ex20.sql
+
+SQL> @ex20.sql
+
+Å×ÀÌºíÀÌ »ý¼ºµÇ¾ú½À´Ï´Ù.
+
+
+Å×ÀÌºíÀÌ »ý¼ºµÇ¾ú½À´Ï´Ù.
+
+SQL> insert into ex21 values (1,'¿µ¾÷');
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> insert into ex21 values (2,'È¸°è');
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> insert into ex21 values (3,'»ý»ê');
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> select * from ex21;
+
+       NUM JOB                                                                  
+---------- ------------------------------                                       
+         1 ¿µ¾÷                                                                 
+         2 È¸°è                                                                 
+         3 »ý»ê                                                                 
+
+SQL> insert into ex20 values (1111,'user1',1);
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> insert into ex20 values (2222,'user2',2);
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> insert into ex20 values (3333,'user3',3);
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> insert into ex20 values (4444,'new1',1);
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> select * from ex20
+  2  ;
+
+     SABUN NAME                                  NUM                            
+---------- ------------------------------ ----------                            
+      1111 user1                                   1                            
+      2222 user2                                   2                            
+      3333 user3                                   3                            
+      4444 new1                                    1                            
+
+SQL> select sabun,name,decode(num,1,'¿µ¾÷',2,'È¸°è',3,
+  2  '»ý»ê') from ex20;
+
+     SABUN NAME                           DECODE(NUM,1                          
+---------- ------------------------------ ------------                          
+      1111 user1                          ¿µ¾÷                                  
+      2222 user2                          È¸°è                                  
+      3333 user3                          »ý»ê                                  
+      4444 new1                           ¿µ¾÷                                  
+
+SQL> insert into ex20 values (5555,'new2
+  2  ',4);
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> select * from ex20
+  2  ;
+
+     SABUN NAME                                  NUM                            
+---------- ------------------------------ ----------                            
+      1111 user1                                   1                            
+      2222 user2                                   2                            
+      3333 user3                                   3                            
+      4444 new1                                    1                            
+      5555 new2                                    4                            
+
+SQL> ed ex20.sql
+
+SQL> drop table ex20;
+
+Å×ÀÌºíÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù.
+
+SQL> drop table ex21;
+
+Å×ÀÌºíÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù.
+
+SQL> @ex20.sql
+	num number references ex21(num)
+	*
+5Çà¿¡ ¿À·ù:
+ORA-00907: ´©¶ôµÈ ¿ì°ýÈ£ 
+
+
+
+Å×ÀÌºíÀÌ »ý¼ºµÇ¾ú½À´Ï´Ù.
+
+SQL> ed ex20.sql
+
+SQL> @ex20.sql
+
+Å×ÀÌºíÀÌ »ý¼ºµÇ¾ú½À´Ï´Ù.
+
+create table ex21(
+             *
+1Çà¿¡ ¿À·ù:
+ORA-00955: ±âÁ¸ÀÇ °´Ã¼°¡ ÀÌ¸§À» »ç¿ëÇÏ°í ÀÖ½À´Ï´Ù. 
+
+
+SQL> drop table ex21;
+drop table ex21
+           *
+1Çà¿¡ ¿À·ù:
+ORA-02449: ¿Ü·¡ Å°¿¡ ÀÇÇØ ÂüÁ¶µÇ´Â °íÀ¯/±âº» Å°°¡ Å×ÀÌºí¿¡ ÀÖ½À´Ï´Ù 
+
+
+SQL> ed ex20.sql
+
+SQL> ed ex20.sql
+
+SQL> @ex20.sql
+	num numbe primary key,
+	    *
+2Çà¿¡ ¿À·ù:
+ORA-00902: µ¥ÀÌÅÍÀ¯ÇüÀÌ ºÎÀûÇÕÇÕ´Ï´Ù 
+
+
+create table ex20(
+             *
+1Çà¿¡ ¿À·ù:
+ORA-00955: ±âÁ¸ÀÇ °´Ã¼°¡ ÀÌ¸§À» »ç¿ëÇÏ°í ÀÖ½À´Ï´Ù. 
+
+
+SQL> ed ex20.sql
+
+SQL> @ex20.sql
+create table ex21(
+             *
+1Çà¿¡ ¿À·ù:
+ORA-00955: ±âÁ¸ÀÇ °´Ã¼°¡ ÀÌ¸§À» »ç¿ëÇÏ°í ÀÖ½À´Ï´Ù. 
+
+
+create table ex20(
+             *
+1Çà¿¡ ¿À·ù:
+ORA-00955: ±âÁ¸ÀÇ °´Ã¼°¡ ÀÌ¸§À» »ç¿ëÇÏ°í ÀÖ½À´Ï´Ù. 
+
+
+SQL> drop table ex20.
+  2  ;
+
+*
+2Çà¿¡ ¿À·ù:
+ORA-00903: Å×ÀÌºí¸íÀÌ ºÎÀûÇÕÇÕ´Ï´Ù 
+
+
+SQL> drop table ex20;
+
+Å×ÀÌºíÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù.
+
+SQL> drop table ex21;
+
+Å×ÀÌºíÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù.
+
+SQL> @ex20.sql
+
+Å×ÀÌºíÀÌ »ý¼ºµÇ¾ú½À´Ï´Ù.
+
+
+Å×ÀÌºíÀÌ »ý¼ºµÇ¾ú½À´Ï´Ù.
+
+SQL> drop table ex21;
+drop table ex21
+           *
+1Çà¿¡ ¿À·ù:
+ORA-02449: ¿Ü·¡ Å°¿¡ ÀÇÇØ ÂüÁ¶µÇ´Â °íÀ¯/±âº» Å°°¡ Å×ÀÌºí¿¡ ÀÖ½À´Ï´Ù 
+
+
+SQL> drop table ex20
+  2  ;
+
+Å×ÀÌºíÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù.
+
+SQL> drop table ex21;
+
+Å×ÀÌºíÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù.
+
+SQL> @ex20.sql
+
+Å×ÀÌºíÀÌ »ý¼ºµÇ¾ú½À´Ï´Ù.
+
+
+Å×ÀÌºíÀÌ »ý¼ºµÇ¾ú½À´Ï´Ù.
+
+SQL> insert into ex20 values (111,'test1',1);
+insert into ex20 values (111,'test1',1)
+*
+1Çà¿¡ ¿À·ù:
+ORA-02291: ¹«°á¼º Á¦¾àÁ¶°Ç(SCOTT.SYS_C004035)ÀÌ À§¹èµÇ¾ú½À´Ï´Ù- ºÎ¸ð Å°°¡
+¾ø½À´Ï´Ù 
+
+
+SQL> insert into ex21 values (1,'¿µ¾÷');
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> insert into ex21 values (2,'È¸°è');
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> insert into ex21 values (3,'»ý»ê');
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> insert into ex20 values (1111,'user1',1);
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> insert into ex20 values (2222,'user2',2);
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> insert into ex20 values (3333,'user3',3);
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> insert into ex20 values (4444,'user3',4);
+insert into ex20 values (4444,'user3',4)
+*
+1Çà¿¡ ¿À·ù:
+ORA-02291: ¹«°á¼º Á¦¾àÁ¶°Ç(SCOTT.SYS_C004035)ÀÌ À§¹èµÇ¾ú½À´Ï´Ù- ºÎ¸ð Å°°¡
+¾ø½À´Ï´Ù 
+
+
+SQL> insert into ex20 values (4444,'user3',1);
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> insert into ex21 values (4,'ÃÑ¹«');
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> insert into ex20 values (4444,'user3',1);
+insert into ex20 values (4444,'user3',1)
+*
+1Çà¿¡ ¿À·ù:
+ORA-00001: ¹«°á¼º Á¦¾à Á¶°Ç(SCOTT.SYS_C004034)¿¡ À§¹èµË´Ï´Ù 
+
+
+SQL> insert into ex20 values (4444,'user3',4);
+insert into ex20 values (4444,'user3',4)
+*
+1Çà¿¡ ¿À·ù:
+ORA-00001: ¹«°á¼º Á¦¾à Á¶°Ç(SCOTT.SYS_C004034)¿¡ À§¹èµË´Ï´Ù 
+
+
+SQL> insert into ex20 values (5555,'new1',4);
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> select * from ex21;
+
+       NUM JOB                                                                  
+---------- ------------------------------                                       
+         1 ¿µ¾÷                                                                 
+         2 È¸°è                                                                 
+         3 »ý»ê                                                                 
+         4 ÃÑ¹«                                                                 
+
+SQL> select * from ex20;
+
+     SABUN NAME                                  NUM                            
+---------- ------------------------------ ----------                            
+      1111 user1                                   1                            
+      2222 user2                                   2                            
+      3333 user3                                   3                            
+      4444 user3                                   1                            
+      5555 new1                                    4                            
+
+SQL> ed ex20.sql
+
+SQL> @ex20.sql
+
+Å×ÀÌºíÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù.
+
+
+Å×ÀÌºíÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù.
+
+
+Å×ÀÌºíÀÌ »ý¼ºµÇ¾ú½À´Ï´Ù.
+
+
+Å×ÀÌºíÀÌ »ý¼ºµÇ¾ú½À´Ï´Ù.
+
+SQL> select * from ex20;
+
+¼±ÅÃµÈ ·¹ÄÚµå°¡ ¾ø½À´Ï´Ù.
+
+SQL> 
+SQL> 
+SQL> 
+SQL> ed ex20.sql
+
+SQL> @ex20.sql
+
+Å×ÀÌºíÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù.
+
+
+Å×ÀÌºíÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù.
+
+
+Å×ÀÌºíÀÌ »ý¼ºµÇ¾ú½À´Ï´Ù.
+
+SP2-0042: ¾Ë ¼ö ¾ø´Â ¸í·É¾î ")" - ³ª¸ÓÁö ÁÙ ¹«½Ã.
+SQL> ed ex20.sql
+
+SQL> ed ex20.sql
+
+SQL> drop table ex20
+  2  ;
+drop table ex20
+           *
+1Çà¿¡ ¿À·ù:
+ORA-00942: Å×ÀÌºí ¶Ç´Â ºä°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù 
+
+
+SQL> drop table ex21;
+
+Å×ÀÌºíÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù.
+
+SQL> drop table ex20;
+drop table ex20
+           *
+1Çà¿¡ ¿À·ù:
+ORA-00942: Å×ÀÌºí ¶Ç´Â ºä°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù 
+
+
+SQL> @ex20.sql
+drop table ex20
+           *
+1Çà¿¡ ¿À·ù:
+ORA-00942: Å×ÀÌºí ¶Ç´Â ºä°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù 
+
+
+drop table ex21
+           *
+1Çà¿¡ ¿À·ù:
+ORA-00942: Å×ÀÌºí ¶Ç´Â ºä°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù 
+
+
+
+Å×ÀÌºíÀÌ »ý¼ºµÇ¾ú½À´Ï´Ù.
+
+
+Å×ÀÌºíÀÌ »ý¼ºµÇ¾ú½À´Ï´Ù.
+
+SQL> desc ex20
+ ÀÌ¸§                                      ³Î?      À¯Çü
+ ----------------------------------------- -------- ----------------------------
+ SABUN                                     NOT NULL NUMBER
+ NAME                                      NOT NULL VARCHAR2(15)
+ NUM                                                NUMBER
+
+SQL> desc ex21
+ ÀÌ¸§                                      ³Î?      À¯Çü
+ ----------------------------------------- -------- ----------------------------
+ NUM                                       NOT NULL NUMBER
+ JOB                                       NOT NULL VARCHAR2(15)
+
+SQL> ed ex20.sql
+
+SQL> @ex20.sql
+
+Å×ÀÌºíÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù.
+
+
+Å×ÀÌºíÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù.
+
+
+Å×ÀÌºíÀÌ »ý¼ºµÇ¾ú½À´Ï´Ù.
+
+
+Å×ÀÌºíÀÌ »ý¼ºµÇ¾ú½À´Ï´Ù.
+
+alter table ex20 add constraint ex20_num_fk foreign key(num) references ex21(num)
+                                            *
+1Çà¿¡ ¿À·ù:
+ORA-02275: ÂüÁ¶ Á¦¾àÀÌ ÀÌ¹Ì Å×ÀÌºí¿¡ Á¸ÀçÇÕ´Ï´Ù 
+
+
+SQL> ed ex20.sql
+
+SQL> @ex20.sql
+
+Å×ÀÌºíÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù.
+
+
+Å×ÀÌºíÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù.
+
+
+Å×ÀÌºíÀÌ »ý¼ºµÇ¾ú½À´Ï´Ù.
+
+   constraint ex20_num_fk references ex21(num)
+                                         *
+5Çà¿¡ ¿À·ù:
+ORA-00907: ´©¶ôµÈ ¿ì°ýÈ£ 
+
+
+SQL> ed ex20.sql
+
+SQL> @ex20.sql
+drop table ex20
+           *
+1Çà¿¡ ¿À·ù:
+ORA-00942: Å×ÀÌºí ¶Ç´Â ºä°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù 
+
+
+
+Å×ÀÌºíÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù.
+
+
+Å×ÀÌºíÀÌ »ý¼ºµÇ¾ú½À´Ï´Ù.
+
+   constraint ex20_num_fk references ex21(num)
+                                         *
+5Çà¿¡ ¿À·ù:
+ORA-00907: ´©¶ôµÈ ¿ì°ýÈ£ 
+
+
+alter table ex20 add constraint ex20_num_fk foreign key(num) references ex21(num)
+*
+1Çà¿¡ ¿À·ù:
+ORA-00942: Å×ÀÌºí ¶Ç´Â ºä°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù 
+
+
+SQL> ed ex20.sql
+
+SQL> @ex20.sql
+drop table ex20
+           *
+1Çà¿¡ ¿À·ù:
+ORA-00942: Å×ÀÌºí ¶Ç´Â ºä°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù 
+
+
+
+Å×ÀÌºíÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù.
+
+
+Å×ÀÌºíÀÌ »ý¼ºµÇ¾ú½À´Ï´Ù.
+
+
+Å×ÀÌºíÀÌ »ý¼ºµÇ¾ú½À´Ï´Ù.
+
+alter table ex20 add constraint ex20_num_fk foreign key(num) references ex21(num)
+                                            *
+1Çà¿¡ ¿À·ù:
+ORA-02275: ÂüÁ¶ Á¦¾àÀÌ ÀÌ¹Ì Å×ÀÌºí¿¡ Á¸ÀçÇÕ´Ï´Ù 
+
+
+SQL> drop table ex20
+  2  ;
+
+Å×ÀÌºíÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù.
+
+SQL> drop table ex21;
+
+Å×ÀÌºíÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù.
+
+SQL> @ex20.sql
+drop table ex20
+           *
+1Çà¿¡ ¿À·ù:
+ORA-00942: Å×ÀÌºí ¶Ç´Â ºä°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù 
+
+
+drop table ex21
+           *
+1Çà¿¡ ¿À·ù:
+ORA-00942: Å×ÀÌºí ¶Ç´Â ºä°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù 
+
+
+
+Å×ÀÌºíÀÌ »ý¼ºµÇ¾ú½À´Ï´Ù.
+
+
+Å×ÀÌºíÀÌ »ý¼ºµÇ¾ú½À´Ï´Ù.
+
+alter table ex20 add constraint ex20_num_fk foreign key(num) references ex21(num)
+                                            *
+1Çà¿¡ ¿À·ù:
+ORA-02275: ÂüÁ¶ Á¦¾àÀÌ ÀÌ¹Ì Å×ÀÌºí¿¡ Á¸ÀçÇÕ´Ï´Ù 
+
+
+SQL> desc ex20
+ ÀÌ¸§                                      ³Î?      À¯Çü
+ ----------------------------------------- -------- ----------------------------
+ SABUN                                     NOT NULL NUMBER
+ NAME                                      NOT NULL VARCHAR2(15)
+ NUM                                                NUMBER
+
+SQL> desc ex21
+ ÀÌ¸§                                      ³Î?      À¯Çü
+ ----------------------------------------- -------- ----------------------------
+ NUM                                       NOT NULL NUMBER
+ JOB                                       NOT NULL VARCHAR2(15)
+
+SQL> select * from ex20
+  2  ;
+
+¼±ÅÃµÈ ·¹ÄÚµå°¡ ¾ø½À´Ï´Ù.
+
+SQL> select * from ex21;
+
+¼±ÅÃµÈ ·¹ÄÚµå°¡ ¾ø½À´Ï´Ù.
+
+SQL> insert into ex20 values (1111,'user1',1);
+insert into ex20 values (1111,'user1',1)
+*
+1Çà¿¡ ¿À·ù:
+ORA-02291: ¹«°á¼º Á¦¾àÁ¶°Ç(SCOTT.EX20_NUM_FK)ÀÌ À§¹èµÇ¾ú½À´Ï´Ù- ºÎ¸ð Å°°¡
+¾ø½À´Ï´Ù 
+
+
+SQL> ed ex22.sql
+
+SQL> @ex22.sql
+	gender char2(1)
+	            *
+4Çà¿¡ ¿À·ù:
+ORA-00907: ´©¶ôµÈ ¿ì°ýÈ£ 
+
+
+SQL> ed ex22.sql
+
+SQL> @ex22.sql
+	gender char2(1) check (gender in('M','F'))
+	            *
+4Çà¿¡ ¿À·ù:
+ORA-00907: ´©¶ôµÈ ¿ì°ýÈ£ 
+
+
+SQL> ed ex22.sql
+
+SQL> @ex22.sql
+
+Å×ÀÌºíÀÌ »ý¼ºµÇ¾ú½À´Ï´Ù.
+
+SQL> insert into ex22 values (1111,'user1','M');
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> insert into ex22 values (2222,'user2','F');
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> insert into ex22 values (1111,'user1','');
+insert into ex22 values (1111,'user1','')
+*
+1Çà¿¡ ¿À·ù:
+ORA-00001: ¹«°á¼º Á¦¾à Á¶°Ç(SCOTT.SYS_C004069)¿¡ À§¹èµË´Ï´Ù 
+
+
+SQL> insert into ex22 values (3333,'user3','m');
+insert into ex22 values (3333,'user3','m')
+*
+1Çà¿¡ ¿À·ù:
+ORA-02290: Ã¼Å© Á¦¾àÁ¶°Ç(SCOTT.SYS_C004068)ÀÌ À§¹èµÇ¾ú½À´Ï´Ù 
+
+
+SQL> ed ex22.sql
+
+SQL> @ex22.sql
+
+Å×ÀÌºíÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù.
+
+
+Å×ÀÌºíÀÌ »ý¼ºµÇ¾ú½À´Ï´Ù.
+
+SQL> insert into ex22 values (1111,'user1','M');
+insert into ex22 values (1111,'user1','M')
+            *
+1Çà¿¡ ¿À·ù:
+ORA-00947: °ªÀÇ ¼ö°¡ ÃæºÐÇÏÁö ¾Ê½À´Ï´Ù 
+
+
+SQL> insert into ex22 values (1111,'user1','M','120');
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> insert into ex22 values (1111,'user1','M',120);
+insert into ex22 values (1111,'user1','M',120)
+*
+1Çà¿¡ ¿À·ù:
+ORA-00001: ¹«°á¼º Á¦¾à Á¶°Ç(SCOTT.SYS_C004073)¿¡ À§¹èµË´Ï´Ù 
+
+
+SQL> insert into ex22 values (2222,'user2','F',1);
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> insert into ex22 values (2222,'user2','F',0);
+insert into ex22 values (2222,'user2','F',0)
+*
+1Çà¿¡ ¿À·ù:
+ORA-02290: Ã¼Å© Á¦¾àÁ¶°Ç(SCOTT.SYS_C004072)ÀÌ À§¹èµÇ¾ú½À´Ï´Ù 
+
+
+SQL> insert into ex22 values (2222,'user2','F',121);
+insert into ex22 values (2222,'user2','F',121)
+*
+1Çà¿¡ ¿À·ù:
+ORA-02290: Ã¼Å© Á¦¾àÁ¶°Ç(SCOTT.SYS_C004072)ÀÌ À§¹èµÇ¾ú½À´Ï´Ù 
+
+
+SQL> select * from ex22;
+
+     SABUN NAME                           GE        AGE                         
+---------- ------------------------------ -- ----------                         
+      1111 user1                          M         120                         
+      2222 user2                          F           1                         
+
+SQL> spool off

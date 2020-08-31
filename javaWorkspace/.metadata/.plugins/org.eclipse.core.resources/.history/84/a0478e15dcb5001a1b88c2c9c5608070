@@ -1,0 +1,9 @@
+package com.bit.studentscorever1;
+
+public class Student {
+	
+	private int korean,english,math;
+	private String name;
+	
+	
+}

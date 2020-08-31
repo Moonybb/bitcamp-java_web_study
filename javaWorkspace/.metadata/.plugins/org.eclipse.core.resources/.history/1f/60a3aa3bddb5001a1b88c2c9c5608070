@@ -1,0 +1,38 @@
+package com.bit.studentscorever1;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+public class StudentScore {
+	
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		Map<Integer, Student> list = new HashMap<>();
+		System.out.println("학생 성적 입력 및 관리기기");
+		System.out.println("---------------------------------");
+		
+		
+		while(true){
+			System.out.println("1.전체 2.상세 3.입력 4.수정 5.삭제 0.종료>");
+			int input = sc.nextInt();
+			sc.nextLine();
+			if(input==0){
+				
+			}else if(input==1){
+				
+			}else if(input==2){
+				
+			}else if(input==3){
+				
+			}else if(input==4){
+				
+			}else if(input==5){
+				
+			}
+			
+		}
+		
+		
+	}
+}

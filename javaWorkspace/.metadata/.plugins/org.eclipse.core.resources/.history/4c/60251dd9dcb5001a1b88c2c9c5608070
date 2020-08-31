@@ -1,0 +1,12 @@
+package com.bit.studentscorever1;
+
+public class StudentScore {
+	
+	public static void main(String[] args) {
+		
+		System.out.println("학생 성적 입력 및 관리기기");
+		System.out.println("---------------------------------");
+		
+		
+	}
+}

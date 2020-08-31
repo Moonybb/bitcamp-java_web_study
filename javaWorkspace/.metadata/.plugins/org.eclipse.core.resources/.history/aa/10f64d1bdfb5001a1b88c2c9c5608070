@@ -1,0 +1,52 @@
+package com.bit.studentscorever1;
+
+public class Student {
+	
+	private int korean,english,math,sum,num;
+	private String name;
+	private double average;
+	
+	public Student(int num){
+		this.num = num;
+	}
+	
+	public int getKorean() {
+		return korean;
+	}
+	public void saveKorean(int korean) {
+		this.korean = korean;
+	}
+	
+	public void saveEnglish(int english) {
+		this.english = english;
+	}
+	
+	public void saveMath(int math) {
+		this.math = math;
+	}
+	
+	public void saveSum(int sum) {
+		this.sum = sum;
+	}
+	public void saveName(String name) {
+		this.name = name;
+	}
+	public void saveAverage(double average) {
+		this.average = average;
+	}
+	public String getName() {
+		return name;
+	}
+	public double getAverage() {
+		return average;
+	}
+	
+	public String toString(){
+		return num+"\t"+name+"\t"+korean+"\t"+english+"\t수학:"+math+"\n총점:"+sum+"\n평균:"+average;
+	}
+	
+	public String view(){
+		return "학번:"+num+ " 이름:"+name+"\n"+"국어:"+korean+"\t영어:"+english+"\t수학:"+math+"\n총점:"+sum+"\n평균:"+average;
+	}
+	
+}

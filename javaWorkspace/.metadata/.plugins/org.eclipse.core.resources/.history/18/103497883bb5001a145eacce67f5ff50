@@ -1,0 +1,29 @@
+package com.bit.student;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Scanner;
+import java.util.Set;
+
+public class Score {
+	
+	
+	public static void main(String[] args) {
+		
+//		Set<Integer,Student> list = new HashSet<>();
+		Scanner sc = new Scanner(System.in);
+		String msg = "학생 성적 입력기";
+		
+		msg+="\n-------------------------";
+//		msg+="\n학번||\t이름||\t국어||\t영어||\t수학||\t총점||\t평균||";
+		while(true){
+		
+			System.out.println(msg);
+		
+		}
+		
+		
+		
+	}
+}

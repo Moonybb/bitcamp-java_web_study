@@ -1,0 +1,7 @@
+SQL> 마지막 commit 시점으로 돌아 가는 것이 rollback 이다.
+SP2-0734: "마지막 com..."(으)로 시작되는 알 수 없는 명령 - 나머지 줄은 무시되었습니다.
+SQL> veiw
+SP2-0042: 알 수 없는 명령어 "veiw" - 나머지 줄 무시.
+SQL> view
+SP2-0042: 알 수 없는 명령어 "view" - 나머지 줄 무시.
+SQL> spool off
