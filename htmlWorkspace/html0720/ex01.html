@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title> Title </title>
+	<style rel="stylesheet" type="text/css">
+        div{
+            width: 300px;
+            height: 300px;
+            background-color: aqua;
+        }
+        div>div{
+            width:  200px;
+            height: 200px;
+            background-color: blue;
+        }
+        div>div>div{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+   <script type="text/javascript">
+    var box1,box2,box3;
+    window.onload=function(){
+        box1=document.querySelector('body>div')
+        box2=document.querySelector('body>div>div')
+        box3=document.querySelector('body>div>div>div')
+        
+        // 이벤트 전파가 일어남 => 버블링
+        // box3을 찍었을 때 box3 > box2 > box1 순으로 일어남 
+        // 이렇게 전파되면서 퍼지는 것을 버블링이라고 한다.
+        /*box1.ondblclick=function(){
+            console.log('box1 click');
+        };
+        box2.ondblclick=function(e){
+            e.stopPropagation();
+            console.log('box2 click');
+        };
+        box3.ondblclick=function(e){
+            // 박스3에서 이벤트 전파가 일어나지 않게 하기 위해서
+            // 파라미터를 받고 stopPropagation(); 해준다. 
+            console.log('box3 click');
+        };*/
+        box1.addEventListener('click',function(e){
+            console.log('box1 click');
+        },true);
+        box2.addEventListener('click',function(e){
+            e.stopPropagation();
+            console.log('box2 click');
+        },true);
+        box3.addEventListener('click',function(e){
+            console.log('box3 click');
+        },true);
+        // 기본적으로 하위에서 상위로 버블링
+        // 하지만 3번째 파라미터로 true주면 상위 -> 하위로 캡처링
+    };
+</script>
+</head>
+
+	<body>
+    <h1>이벤트 버블링과 캡처링</h1>
+    <div>box1
+        <div>box2
+            <div>box3</div>
+        </div>
+    </div>
+</body>
+</html>

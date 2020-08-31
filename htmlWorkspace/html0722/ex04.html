@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title> Title </title>
+    <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+    <script type="text/javascript">
+        
+        // on , off, one
+        
+    $(document).ready(function(){
+        var callback = function(){
+            alert('이벤트 호출'); 
+        };
+        
+        $('button').eq(0).on('click',callback);
+        $('button').eq(0).on('click',function(){
+            console.log('이벤트 호출')
+        });
+        $('button').eq(1).on('click',function(){
+//            $('button').eq(0).off('click',callback);
+            // 아래처럼 콜백을 주지 않고 이벤트만 주게 되면 모든 클릭 이벤트를 off한다.
+//            $('button').eq(0).off('click');
+            $('button').eq(0).off();
+        });
+        $('button').eq(2).one(function(){
+            console.log('one클릭')
+        })
+    });
+    </script>
+</head>
+
+<body>
+    <button>btn</button>
+    <button>off</button>
+    <button>one</button>
+</body>
+</html>

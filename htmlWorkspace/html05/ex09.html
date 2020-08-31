@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Title </title>
+</head>
+
+<body>
+
+    <form action="index.html">
+        <table width="1024px" align="center">
+            <tr>
+                <td align="center">학번</td>
+                <td><input type="text" id="grade"/>
+                    <script>
+                        var grade=document.getElementById('grade');
+                        console.log(grade);
+                    </script>
+                </td>
+            </tr>
+            <tr>
+                <td align="center">이름</td>
+                <td><input type="text" id="name"/></td>
+            </tr>
+            <tr>
+                <th>국어</th>
+                <td><input type="text" id="kor"/></td>
+            </tr>
+            <tr>
+                <th>영어</th>
+                <td><input type="text" id="eng"/></td>
+            </tr>
+            <tr>
+                <th>수학</th>
+                <td><input type="text" id="matt" /></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="입력" />
+                    <input type="reset" value="취소" />
+                </td>
+            </tr>
+
+        </table>
+    </form>
+</body></html>

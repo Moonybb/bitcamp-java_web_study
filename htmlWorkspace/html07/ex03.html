@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Title </title>
+</head>
+
+<body>
+    <h1>inner& outter</h1>
+    <div>
+        <ul>
+            <li>item1</li>
+            <li>item2</li>
+            <li>item3</li>
+            <li>item4</li>
+        </ul>
+    </div>
+    <div id="target"></div>
+    <script type="text/javascript">
+        var div = document.querySelector('div');
+        var ul = div.querySelector('ul');
+        //        ul.innerHTML='<li>edit</li><li>edit2</li>'
+        // ul태그 안의 innerHTML 요소를 바꿈.
+//        ul.outerHTML='<ol><li>edit1</li><li>edit2</li></ol>'
+        // ul태그 자기자신도 바꿔버림
+        
+        var target = document.querySelector('#target');
+        target.innerHTML='<ol>'+ul.innerHTML+'</ol>'
+        
+    </script>
+</body></html>

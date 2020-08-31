@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title> Title </title>
+    <style rel="stylesheet" type="text/css">
+        #target{
+            width: 300px;
+            height: 300px;
+            background-color: gray;
+        }
+    </style>
+	<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+        // 기본적으로 jQuery는 dom level3 를 기준으로 한다.
+        // dom level2같은 경우에는 아래와 같을 때 마지막 메서드로 덮어 쓰게 되지만
+        // on 메서드를 통하여 아래와 같이 작성하면 하나의 타겟에 많은 메서드를 붙일 수 있다.
+        $(document).ready(function(){
+            
+            // 원래 onclick라는 메서드가 있고 그 메서드를 재정의하는 것이기 때문에
+            // 그 함수는 기본적으로 return true되서 본래의 기능을 하는 것이다.
+            // 자바스크립트 특징이 리턴을 주던 안주던 문제가 생기지 않는다.
+            // 리턴을 안주게 되면 => undefined    
+            // 그렇기 때문에 아래에서 강제적으로 return false를 주므로써
+            // 본래의 기능을 안하게 되어 있다.
+            
+            var a = document.querySelector('a');
+            
+            // dom level2
+            a.onclick = function(){return false;};
+            
+            // dom level3
+            a.addEventListener('click',function(e){
+                e.preventDefault(); // 엘리먼트가 갖는 고유 기능 취소
+            });
+        
+            $('a').on('click',function(e){
+                // 이벤트 인자를 받아서 preventDefault를 통해 return false의
+                // 역할을 하게 만듦.
+                
+                // preventDefault는 그 태그가 가지고 있는 고유 기능을 취소하는 것이다.
+                // 예를들어 a 태그를 엘리먼트로 잡고 그에 대한 이벤트 객체를
+                // preventDefault 하게 되면 a 태그 자체에 대한 링크타고 넘어가는
+                // 기능 자체를 취소시킬 수 있다는 것이다.
+                e.preventDefault();
+                console.log('클릭'); 
+//                return false; // 브라우저마다 다르다
+                
+            });
+//            $('a').click(function(){
+//                e.preventDefault();
+//                console.log('click 메서드 a');
+////                return false;
+//            });
+            $('#target').click(function(){
+                console.log('또 다른 click 메서드');
+            })
+        });
+    </script>
+</head>
+
+<body>
+    <h1>이벤트 바인딩</h1>
+    <a href="https://naver.com">link</a>
+    <div id="target"></div>
+</body>
+</html>

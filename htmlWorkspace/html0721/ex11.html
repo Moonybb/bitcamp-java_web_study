@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title> Title </title>
+	<style rel="stylesheet" type="text/css">
+        #target{
+            width: 500px;
+            height: 400px;
+            position: absolute;
+            background-color: gray;
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $('div').click(function(e){
+            console.log('click',e.clientX,e.clientY);
+//            console.log('click',e.pageX,e.pageY); 
+//            console.log('click',e.screenX,e.screenY);
+        });
+//        $('div').mousedown(function(){
+//            console.log('down');
+//        });
+//        $('div').mouseup(function(){
+//            console.log('up');
+//        });
+//        $('div').dblclick(function(){
+//            console.log('더블클릭');
+//        });
+//        $(document).mouseover(function(){
+//            console.log('over');
+//        }).mouseout(function(){
+//            console.log('out');
+//        });
+//        $('div').mouseover(function(e){
+//            e.stopPropagation();
+//            console.log('over');
+//        }).mouseout(function(e){
+//            e.stopPropagation();
+//            console.log('out');
+//        });
+        
+        $('div').mousemove(function(e){
+            console.log(e.pageX,e.pageY);
+        });
+        
+    });
+    </script>
+</head>
+
+	<body>
+   <h1>마우스 이벤트</h1>
+    <div id="target"></div>
+</body>
+</html>

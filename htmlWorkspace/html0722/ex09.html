@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title> Title </title>
+	<style rel="stylesheet" type="text/css">
+        div{
+            width: 50px;
+            height: 50px;
+            color: white;
+            background-color: black;
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+    <script type="text/javascript">
+        
+    function callbak(){
+        alert('종료');
+    }
+        var lav = $('<span/>');
+    $(document).ready(function(){
+//        $('div').animate({'width':'500px'},3000,'swing',callbak);
+        $('div').animate({'width':'500px'},{
+            'duration':3000,'easing':'easeOutBounce','done':callbak,
+//            'step':function(a,b,c){
+//                console.log('step : '+a,b,c);
+//            },
+            // 과거에는 step으로 연산처리를 하여 진행하여야 했는데
+            // 1.8에서 progress가 나오면서 쉽게 처리가 가능해 짐
+            'progress':function(a,b,c){
+                console.log('progress : '+a,b,c);
+                $(lav).text(parseInt(b*100)+'%');
+            }
+            ,'start':function(){
+                $('div').append(lav);
+            }
+        });
+    });
+    </script>
+</head>
+
+<body>
+    <h1>animate</h1>
+    <div>box</div>
+</body>
+</html>

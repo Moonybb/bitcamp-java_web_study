@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title> Title </title>
+	<style rel="stylesheet" type="text/css">
+        div{
+            width: 200px;
+            background-color: aqua;
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+    <script type="text/javascript">
+        function callback(){
+            alert('애니메이션의 두번째 인자로 콜백함수를 넣으면 된다.');
+        }
+        $(document).ready(function(){
+            $('button').eq(0).click(function(){
+//                $('div').hide('slow');      
+//                $('div').slideUp('slow');
+//                $('div').fadeOut('slow');
+//                $('div').slideUp(3000,callback);
+                $('div').fadeTo(2000,0.2);
+                
+            });
+            $('button').eq(1).click(function(){
+//                $('div').show('fast'); 
+//                $('div').slideDown('slow');
+//                $('div').fadeIn('slow');
+                
+//                $('div').slideDown(3000,function(){
+////                    $('button').eq(0).click();
+//                });
+                
+                $('div').fadeTo(2000,0.7);
+                
+            });
+            $('button').eq(2).click(function(){
+                $('div').eq(0).slideToggle(1000); 
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <h1>animation</h1>
+    
+    <button>hide</button>
+    <button>show</button>
+    <button>toggle</button>
+    <div>
+        노년에게서 없으면 가지에 피에 같이, 사막이다. 무엇이 가치를 없는 있는 않는 아니더면, 피가 품었기 황금시대의 철환하였는가? 청춘을 할지니, 밥을 힘있다. 기관과 대한 그들은 가치를 속에서 공자는 열매를 풍부하게 커다란 말이다. 예수는 못할 그것을 이것이다. 대한 웅대한 그들에게 쓸쓸하랴? 그것을 부패를 피가 것이 바로 힘차게 그들은 봄날의 불어 말이다. 피어나는 보이는 가치를 평화스러운 것이다. 커다란 청춘이 안고, 운다. 속잎나고, 구하지 가치를 산야에 많이 놀이 부패뿐이다. 남는 살 힘차게 넣는 두손을 듣는다.
+
+    하는 우는 인간이 밥을 이상을 설레는 천자만홍이 품고 얼음과 이것이다. 동력은 만물은 주는 품으며, 시들어 것이다. 봄날의 아니더면, 군영과 행복스럽고 사막이다. 뼈 것이다.보라, 인생을 희망의 무엇을 이상이 바이며, 사랑의 이것이다. 우리의 얼마나 가는 운다. 이상의 봄날의 따뜻한 곳이 있는가? 것은 무엇이 넣는 너의 이상의 소리다.이것은 못할 열락의 이것이다. 생생하며, 할지니, 노년에게서 든 소금이라 때문이다. 되는 같이, 평화스러운 가치를 소금이라 대중을 것이다. 동산에는 반짝이는 원대하고, 교향악이다.
+
+    발휘하기 커다란 이성은 귀는 눈에 원질이 우리의 피고, 우리 이것이다. 듣기만 눈에 안고, 하는 인도하겠다는 따뜻한 말이다. 그들을 장식하는 그들은 이 피어나는 있는가? 인간의 예가 인생을 심장의 오아이스도 든 때문이다. 것은 어디 거선의 위하여 구하지 사랑의 철환하였는가? 천고에 위하여 얼마나 아니더면, 싶이 얼마나 아름다우냐? 거선의 속잎나고, 동력은 있는가? 용기가 더운지라 행복스럽고 따뜻한 뿐이다. 그와 두손을 청춘의 용기가 대고, 살았으며, 그들의 일월과 사람은 보라
+    </div>
+</body>
+</html>

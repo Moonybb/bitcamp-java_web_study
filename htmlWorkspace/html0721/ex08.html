@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Title </title>
+    <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+    <script type="text/javascript">
+        function func01() {
+            var first = $('ul>li').eq(0);
+            $('ul').append(first);
+        }
+        function func02(){
+            $('ul>li').eq(0).appendTo('ul');
+        }
+        window.onload = function() {
+//            setInterval(func02, 1000);
+            
+        };
+    </script>
+</head>
+
+<body>
+    <h1>캐러셀</h1>
+    <ul>
+        <ul>
+            <li><img src="img/bigmeet1.jpg" alt=""></li>
+            <li><img src="img/bigmeet2.jpg" alt=""></li>
+            <li><img src="img/bigmeet3.jpg" alt=""></li>
+            <li><img src="img/bigmeet4.jpg" alt=""></li>
+            <li><img src="img/bigmeet5.jpg" alt=""></li>
+            <li><img src="img/bigmeet6.jpg" alt=""></li>
+        </ul>
+    </ul>
+</body></html>

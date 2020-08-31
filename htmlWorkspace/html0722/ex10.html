@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title> Title </title>
+<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('div')
+            .animate({'margin-left':'300px'},3000)
+            .delay(1000) // 1초 뒤에 시작
+            .animate({'margin-top':'300px'},3000)
+            .animate({'margin-left':'0px'},3000)
+            .animate({'margin-top':'0px'},3000)
+        $('button').click(function(){
+            // 애니메이션 진행 도중 버튼 클릭시 끝나고 제자리로 돌아옴
+//            $('div').finish(); 
+        });
+        console.log('end');
+    });
+</script>
+</head>
+
+<body>
+    <h1>동작제어</h1>
+    <button>end</button>
+    <div>box</div>
+</body>
+</html>

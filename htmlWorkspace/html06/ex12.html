@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Title </title>
+    <style rel="stylesheet" type="text/css">
+        div{
+            
+        }
+        div>ul{
+            width:1920px;
+            animation-name: ani1;
+            animation-duration: 6s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate-reverse;
+            animation-play-state: paused;
+        }
+        div>ul>li{
+            list-style: none;
+            float: left;
+        }
+        div>ul>li>img{}
+        
+        @keyframes ani1{
+            from{margin-left:0px; }
+            to{margin-left: -1600px;}
+            
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <ul>
+            <li><img src="img/bigmeet1.jpg" /></li>
+            <li><img src="img/bigmeet2.jpg" /></li>
+            <li><img src="img/bigmeet3.jpg" /></li>
+            <li><img src="img/bigmeet4.jpg" /></li>
+            <li><img src="img/bigmeet5.jpg" /></li>
+            <li><img src="img/bigmeet6.jpg" /></li>
+        </ul>
+
+    </div>
+    <script type="text/javascript">
+        var ul=document.querySelector('ul');
+        ul.style.animationPlayState='running';
+    </script>
+</body></html>

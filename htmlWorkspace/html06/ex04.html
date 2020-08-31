@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title> Title </title>
+	<script type="text/javascript">
+//    var frame = window.open("https://naver.com");
+        
+//    frame.close();
+        var frame;
+        function func01(){
+            //window.open(URL,name,specs,replace)
+            frame = window.open("https://naver.com","_blank","width=100,height=100");
+        }
+        function func02(){
+            frame.close();
+        }
+        // window.location.replace -> 뒤로가기 X
+        // window.location.href=""; 뒤로가기됨
+        /*window.location.host;
+        "127.0.0.1:52590"
+        window.location.hostname;
+        "127.0.0.1"
+        window.location.hostport;
+        undefined
+        window.location.port;
+        "52590"
+        window.location.pathname;
+        "/ex04.html"*/
+    </script>
+</head>
+
+	<body>
+        <button onclick="func01()">open</button>
+        <button onclick="func02()">close</button>
+</body>
+</html>
