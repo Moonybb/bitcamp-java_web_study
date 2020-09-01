@@ -7,12 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h2>정상 처리하였습니다</h2>
-	<script type="text/javascript">
-		function callback(){
-			location.href="list.action";
-		}
-		setTimeout(callback, 1000);
-	</script>
+	<h2>result page</h2>
+	<div>sabun : ${bean.sabun }</div>
+	<div>name : ${bean.name }</div>
 </body>
 </html>

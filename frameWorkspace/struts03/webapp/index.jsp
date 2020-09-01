@@ -7,12 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h2>정상 처리하였습니다</h2>
-	<script type="text/javascript">
-		function callback(){
-			location.href="list.action";
-		}
-		setTimeout(callback, 1000);
-	</script>
+	<h1>test page</h1>
 </body>
 </html>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+    
+    <struts>
+    	<package name="default" extends="struts-default">
+    		<action name="index">
+    			<result type="dispatcher" name="success">/index.jsp</result>
+    		</action>
+    		
+    		<!-- redirect는 response.sendRedirect와 같은 기능이다. redirect에 index.bit을 주었으니 주소로 바로 접근한다. -->
+    		<action name="main">
+    			<result type="redirect">index.bit</result>
+    		</action>
+    		
+    		<!-- redirectAction에 index를 주면 패키지 내부의 action name이 index 인 것을 찾아 보내준다.  -->
+    		<action name="etc">
+    			<result type="redirectAction">index</result>
+    		</action>
+    	</package>
+    	
+    	
+    	<package name="lec01" extends="default">
+             <action name="input" class="com.bit.action.InputAction">
+                <result name="success">/input.jsp</result>
+             </action>
+             
+             <action name="result" class="com.bit.action.Step01Action">
+                <interceptor-ref name="params"></interceptor-ref>
+                <result name="success">/result.jsp</result>
+             </action>
+             
+             <action name="result2" class="com.bit.action.Step02Action">
+                <interceptor-ref name="params"></interceptor-ref>
+                <result name="success">/result.jsp</result>
+             </action>
+
+             <action name="result3" class="com.bit.action.Step03Action">
+                <interceptor-ref name="modelDriven"></interceptor-ref>
+                <interceptor-ref name="params"></interceptor-ref>
+                <result name="success">/result.jsp</result>
+             </action>
+             <action name="result4" class="com.bit.action.Step04Action">
+                <interceptor-ref name="prepare"/>
+                <interceptor-ref name="modelDriven"/>
+                <interceptor-ref name="params"/>
+                <result name="success">/result.jsp</result>
+             </action>
+       </package>
+       
+    </struts>
