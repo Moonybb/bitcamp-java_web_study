@@ -64,6 +64,38 @@ public class DeptDao {
 			}
 		}
 	}
+	
+	public DeptVo selectOne(int deptno) throws SQLException {
+		DeptVo bean = new DeptVo();
+		String sql = "select * from dept where deptno=?";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, deptno);
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()) {
+				bean.setDeptno(rs.getInt("deptno"));
+				bean.setDname(rs.getString("dname"));
+				bean.setLoc(rs.getString("loc"));
+			}
+		}finally {
+			if(conn!=null)conn.close();
+		}
+		return bean;
+	}
+	
+	public void updateOne(int deptno, String dname, String loc) throws SQLException {
+		String sql = "update dept set dname=?, loc=? where deptno=?";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, dname);
+			pstmt.setString(2, loc);
+			pstmt.setInt(3, deptno);
+			pstmt.executeUpdate();
+		}finally {
+			if(conn!=null)conn.close();
+		}
+	}
+	
 }
 
 

@@ -16,6 +16,9 @@ public class DeptInsertAction implements Action {
 
 	@Override
 	public String execute() throws Exception {
+		if(dname.isEmpty()) {
+			return Action.INPUT;
+		}
 		DeptDao dao=new DeptDao();
 		dao.insertOne(dname,loc);
 		return Action.SUCCESS;
